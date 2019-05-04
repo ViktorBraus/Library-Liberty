@@ -1,0 +1,52 @@
+﻿<Window x:Class="Проект.TicketSale"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Проект"
+        mc:Ignorable="d"
+        Title="TicketSale" Height="566.23" Width="652.137"  Background="Transparent" WindowStartupLocation="CenterScreen" WindowStyle="None" 
+        AllowsTransparency="True">
+    <Window.Resources>
+        <Style x:Key="DelAll">
+            <Setter Property="Button.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" ClipToBounds="True">
+                            <Border Name="Head">
+                                <Rectangle x:Name="innerRectangle" HorizontalAlignment="Stretch"  
+                                           VerticalAlignment="Stretch"  Stroke="Transparent" StrokeThickness="20" 
+                                           Fill="{TemplateBinding Background}" RadiusX="20" RadiusY="20"/>
+                            </Border>
+                            <Label Name="NameLable" Content="Login" FontStyle="Italic" HorizontalAlignment="Center" 
+                                   VerticalAlignment="Center" Foreground="White"></Label>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Border CornerRadius="200" BorderThickness="3" Margin="10,0,43.6,0" Height="566" VerticalAlignment="Top">
+        <Border.BorderBrush>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF2400B1" Offset="0.112"/>
+                <GradientStop Color="#FFBF3D3D" Offset="0.838"/>
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+        <Border.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black" Offset="1"/>
+                <GradientStop Color="#FF44A063" Offset="0.237"/>
+            </LinearGradientBrush>
+        </Border.Background>
+        <StackPanel Margin="-3.2,-3.2,-2.8,-2.8" MouseLeftButtonDown="customWindow_MouseLeftButtonDown">
+            <Grid Height="86" Margin="0,0,0.4,0">
+                <Button  Margin="78,34,467,0" Width="53" RenderTransformOrigin="1.168,0.031" Height="53" VerticalAlignment="Top" Background="Black"/>
+                <Label Content="Braus Airways" Foreground="White" FontSize="48"  FontFamily="Viner Hand ITC" Margin="131,0,44,2"/>
+                <Button  Margin="467,34,78,0" Width="53" RenderTransformOrigin="1.168,0.031" Height="53" Background="Black"/>
+            </Grid>
+        </StackPanel>
+    </Border>
+</Window>
