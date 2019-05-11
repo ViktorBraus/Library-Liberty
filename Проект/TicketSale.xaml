@@ -5,30 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Проект"
         mc:Ignorable="d"
-        Title="TicketSale" Height="566.23" Width="652.137"  Background="Transparent" WindowStartupLocation="CenterScreen" WindowStyle="None" 
-        AllowsTransparency="True">
+        Loaded="Window_Loaded"
+        Title="Braus Airways" Height="413.83" Width="961.737"  Background="Transparent" WindowStartupLocation="CenterScreen" WindowStyle="None" 
+        AllowsTransparency="True" Icon="Images/Icon.png">
     <Window.Resources>
-        <Style x:Key="DelAll">
-            <Setter Property="Button.Template">
+        <Style x:Key="OpacityCell" TargetType="DataGrid">
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="RowBackground"
+                    Value="Transparent" />
+            <Setter Property="VerticalGridLinesBrush"
+                    Value="White" />
+            <Setter Property="HorizontalGridLinesBrush"
+                    Value="Transparent" />
+            <Setter Property="CellStyle">
                 <Setter.Value>
-                    <ControlTemplate>
-                        <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" ClipToBounds="True">
-                            <Border Name="Head">
-                                <Rectangle x:Name="innerRectangle" HorizontalAlignment="Stretch"  
-                                           VerticalAlignment="Stretch"  Stroke="Transparent" StrokeThickness="20" 
-                                           Fill="{TemplateBinding Background}" RadiusX="20" RadiusY="20"/>
-                            </Border>
-                            <Label Name="NameLable" Content="Login" FontStyle="Italic" HorizontalAlignment="Center" 
-                                   VerticalAlignment="Center" Foreground="White"></Label>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
+                    <Style TargetType="DataGridCell">
+                        <Style.Triggers>
+                            <Trigger Property="DataGridCell.IsSelected" Value="true">
+                                <Setter Property="Background" Value="LightBlue" />
+                                <Setter Property="Foreground" Value="Black" />
+                                <Setter Property="Margin" Value="1" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
                 </Setter.Value>
             </Setter>
         </Style>
     </Window.Resources>
-    <Border CornerRadius="200" BorderThickness="3" Margin="10,0,43.6,0" Height="566" VerticalAlignment="Top">
+    <Border CornerRadius="200" BorderThickness="3" Margin="10,0,43.6,-0.4" Height="414" VerticalAlignment="Top">
         <Border.BorderBrush>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="#FF2400B1" Offset="0.112"/>
@@ -41,11 +46,97 @@
                 <GradientStop Color="#FF44A063" Offset="0.237"/>
             </LinearGradientBrush>
         </Border.Background>
-        <StackPanel Margin="-3.2,-3.2,-2.8,-2.8" MouseLeftButtonDown="customWindow_MouseLeftButtonDown">
+        <StackPanel Margin="-3.2,-3.2,-3,-17.6" MouseLeftButtonDown="customWindow_MouseLeftButtonDown">
             <Grid Height="86" Margin="0,0,0.4,0">
-                <Button  Margin="78,34,467,0" Width="53" RenderTransformOrigin="1.168,0.031" Height="53" VerticalAlignment="Top" Background="Black"/>
-                <Label Content="Braus Airways" Foreground="White" FontSize="48"  FontFamily="Viner Hand ITC" Margin="131,0,44,2"/>
-                <Button  Margin="467,34,78,0" Width="53" RenderTransformOrigin="1.168,0.031" Height="53" Background="Black"/>
+                <Label Content="Braus Airways" Foreground="White" FontSize="48"  FontFamily="Viner Hand ITC" Margin="0,0,-0.2,2" HorizontalContentAlignment="Center"/>
+                <Button  Margin="95,34,758.8,-1" Width="53" RenderTransformOrigin="1.168,0.031" Height="53" VerticalAlignment="Top" Click="Button_Click_3">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Images/1.png"/>
+                    </Button.Background>
+                </Button>
+                <Button  Margin="773,33,80.8,0" Width="53" RenderTransformOrigin="1.168,0.031" Height="53" Click="Button_Click_1">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Images/2.png"/>
+                    </Button.Background>
+                </Button>
+            </Grid>
+            <Grid>
+                <DataGrid   Style="{StaticResource OpacityCell}" ItemsSource="{Binding}" 
+                    ScrollViewer.VerticalScrollBarVisibility="Visible" 
+                          ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                          AutoGenerateColumns="False" 
+                          x:Name="Tickets" Margin="90,0,77.8,-145" HorizontalContentAlignment="Center" HorizontalAlignment="Center" 
+                          Foreground="White" IsSynchronizedWithCurrentItem="True" BorderThickness="3,1,1,1" RenderTransformOrigin="0.5,0.5" 
+                         
+                          ClipToBounds="True" SelectionChanged="Tickets_SelectionChanged" 
+                            Grid.IsSharedSizeScope="True" 
+                            Width="auto" ColumnWidth="780" HorizontalScrollBarVisibility="Hidden" 
+                            FontWeight="Bold" VerticalContentAlignment="Center" FontStyle="Italic" Height="229" VerticalAlignment="Bottom" >
+                    <DataGrid.Resources>
+                        <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Background" Value="Transparent" />
+                        </Style>
+                    </DataGrid.Resources>
+                    <DataGrid.Background>
+
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black" Offset="1"/>
+                            <GradientStop Color="#FFA2A2C2" Offset="0.5"/>
+                            <GradientStop Color="#FFF60D0D"/>
+                        </LinearGradientBrush>
+                    </DataGrid.Background>
+                    <DataGrid.Effect>
+                        <DropShadowEffect/>
+                    </DataGrid.Effect>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn x:Name="s" Binding="{Binding [Город Отправления]}" SortDirection="Ascending" Header="Город Отправления" Width="auto"/>
+                        <DataGridTextColumn x:Name="s1" Binding="{Binding [Город Прибытия]}" SortDirection="Ascending" Header="Город Прибытия" Width="auto"/>
+                        <DataGridTextColumn x:Name="s2" Binding="{Binding [Дата Отправления]}" SortDirection="Ascending" Header="Дата Отправления" Width="auto"/>
+                        <DataGridTextColumn x:Name="s3" Binding="{Binding [Дата Прибытия]}" SortDirection="Ascending" Header="Дата Прибытия" Width="auto"/>
+                        <DataGridTextColumn x:Name="s4" Binding="{Binding [Тип Билета]}" SortDirection="Ascending" Header="Тип Билета" Width="auto"/>
+                        <DataGridTextColumn x:Name="s5" Binding="{Binding [Цена за билет]}" SortDirection="Ascending" Header="Цена за билет" Width="auto"/>
+                        <DataGridTextColumn x:Name="s6" Binding="{Binding [Посадочное Место]}" SortDirection="Ascending" Header="Посадочное Место" Width="auto"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Button FontFamily="Viner Hand ITC" FontWeight="Bold" Foreground="White" BorderBrush="White" 
+                            FontSize="20"  HorizontalContentAlignment="Center" 
+                        MouseMove="Login2" MouseLeave="Login3" x:Name="UpdateButton"
+                            Content="       Update" Click="UpdateButton_Click" Margin="549,229,182.2,-209" Width="176" Height="64" 
+                            >
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                            <GradientStop Color="Black" Offset="0.884"/>
+                            <GradientStop Color="#FFA1A1B9" Offset="0.5"/>
+                            <GradientStop Color="#FFF60D0D" Offset="0.159"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button FontFamily="Viner Hand ITC" Foreground="White" BorderBrush="White" 
+                            FontSize="20"  HorizontalContentAlignment="Center" 
+                            MouseMove="Exit2" MouseLeave="Exit3" x:Name="DeleteButton" Content="        Delete" 
+                            Click="DeleteButton_Click" Margin="185,229,546.2,-209" 
+                            Width="176" Height="64" FontWeight="Bold">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                            <GradientStop Color="Black" Offset="0.884"/>
+                            <GradientStop Color="#FFA1A1B9" Offset="0.5"/>
+                            <GradientStop Color="#FFF60D0D" Offset="0.159"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="Exit1" Content="     Home" MouseLeave="Exit3" MouseMove="Exit2" Margin="394,253,377.8,-238"
+                Click="Button_Click"
+                FontFamily="Viner Hand ITC" FontWeight="Bold" Foreground="White" BorderBrush="White" 
+                FontSize="20"  HorizontalContentAlignment="Stretch" 
+                Height="69" Cursor="Pen" Width="Auto" VerticalContentAlignment="Stretch">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                            <GradientStop Color="Black" Offset="0.884"/>
+                            <GradientStop Color="#FFA1A1B9" Offset="0.5"/>
+                            <GradientStop Color="#FFF60D0D" Offset="0.159"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
             </Grid>
         </StackPanel>
     </Border>

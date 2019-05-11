@@ -1,0 +1,308 @@
+﻿<Window x:Class="Проект.UserTicket"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Проект"
+        mc:Ignorable="d"
+        Background="Transparent" WindowStartupLocation="CenterScreen" WindowStyle="None" 
+        AllowsTransparency="True"
+        Title="Braus Airways" Height="412.8" Width="919.695" HorizontalAlignment="Center">
+    <Window.Resources>
+        <Style x:Key="{x:Type ComboBox}"
+       TargetType="{x:Type ComboBox}">
+            <Setter Property="SnapsToDevicePixels"
+          Value="true" />
+            <Setter Property="OverridesDefaultStyle"
+          Value="true" />
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
+          Value="Auto" />
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility"
+          Value="Auto" />
+            <Setter Property="ScrollViewer.CanContentScroll"
+          Value="true" />
+            <Setter Property="MinWidth"
+          Value="120" />
+            <Setter Property="MinHeight"
+          Value="20" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBox}">
+                        <Grid >
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="MouseOver" />
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="PART_EditableTextBox"
+                                                Storyboard.TargetProperty="(TextElement.Foreground).
+                      (SolidColorBrush.Color)">
+                                                <EasingColorKeyFrame KeyTime="0"
+                                         Value= "{StaticResource DisabledForegroundColor}" />
+                                            </ColorAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="EditStates">
+                                    <VisualState x:Name="Editable">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                                 Storyboard.TargetName="PART_EditableTextBox">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                            Value="{x:Static Visibility.Visible}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames
+                      Storyboard.TargetProperty="(UIElement.Visibility)"
+                                                 Storyboard.TargetName="ContentSite">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                            Value="{x:Static Visibility.Hidden}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Uneditable" />
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <ToggleButton x:Name="ToggleButton"
+                        Template="{StaticResource ComboBoxToggleButton}"
+                        Grid.Column="2"
+                        Focusable="false"
+                        ClickMode="Press"
+                        IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="#FF5E1A66"/>
+                            <ContentPresenter x:Name="ContentSite"
+                            IsHitTestVisible="False"
+                            Content="{TemplateBinding SelectionBoxItem}"
+                            ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                            ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                            Margin="3,3,23,3"
+                            VerticalAlignment="Stretch"
+                            HorizontalAlignment="Left">
+                            </ContentPresenter>
+                            <TextBox x:Name="PART_EditableTextBox"
+                                     Style="{x:Null}"
+                   Template="{StaticResource ComboBoxTextBox}"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   Margin="2,0,0,0"
+                   Foreground="White"
+                   Focusable="True"
+                   Background="Red"
+                   Visibility="Hidden" Width="97" Height="24"
+                                     FontSize="9.2"
+                            />
+                            <Popup x:Name="Popup"                    
+                 Placement="Bottom"
+                 IsOpen="{TemplateBinding IsDropDownOpen}"
+                 AllowsTransparency="True"
+                 Focusable="False"
+                 PopupAnimation="Fade">
+                                <Grid x:Name="DropDown"
+                  SnapsToDevicePixels="True"
+                                      
+                  MinWidth="{TemplateBinding ActualWidth}"
+                  MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                    <Border x:Name="DropDownBorder"
+                      BorderThickness="2">
+                                        <Border.BorderBrush>
+                                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFBF3D3D" Offset="0.112"/>
+                                                <GradientStop Color="#FF2400B1" Offset="0.838"/>
+                                            </LinearGradientBrush>
+                                        </Border.BorderBrush>
+                                        <Border.Background>
+                                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0" Opacity="0.71">
+                                                <GradientStop Color="#FFBF3D3D" Offset="0.888"/>
+                                                <GradientStop Color="#FF2400B1" Offset="0.162"/>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                    </Border>
+                                    <ScrollViewer Margin="4,6,4,6"
+                            SnapsToDevicePixels="True">
+                                        <StackPanel IsItemsHost="True"
+                            KeyboardNavigation.DirectionalNavigation="Contained" />
+                                    </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="HasItems"
+                   Value="false">
+                                <Setter TargetName="DropDownBorder"
+                    Property="MinHeight"
+                    Value="95" />
+                            </Trigger>
+                            <Trigger Property="IsGrouping"
+                   Value="true">
+                                <Setter Property="ScrollViewer.CanContentScroll"
+                    Value="false" />
+                            </Trigger>
+                            <Trigger SourceName="Popup"
+                   Property="AllowsTransparency"
+                   Value="true">
+                                <Setter TargetName="DropDownBorder"
+                    Property="CornerRadius"
+                    Value="4" />
+                                <Setter TargetName="DropDownBorder"
+                    Property="Margin"
+                    Value="0,2,0,0" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="{x:Type ComboBoxItem}"
+       TargetType="{x:Type ComboBoxItem}">
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" >
+                        <Setter.Value><!--FF5E1A66-->
+                            <SolidColorBrush Color="#FF073A0C" Opacity="0.4"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+            <Setter Property="SnapsToDevicePixels"
+          Value="true" />
+            <Setter Property="OverridesDefaultStyle"
+          Value="true" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                        <Border x:Name="Border"
+                Padding="2"
+                SnapsToDevicePixels="true"
+                Background="Transparent" BorderBrush="#FF5E1A66" BorderThickness="1">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="SelectionStates">
+                                    <VisualState x:Name="Unselected" />
+                                    <VisualState x:Name="Selected">
+                                        <Storyboard>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="(Panel.Background).
+                    (SolidColorBrush.Color)">
+                                                <EasingColorKeyFrame KeyTime="0"
+                                         Value="#FF073A0C" />
+                                            </ColorAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="SelectedUnfocused">
+                                        <Storyboard>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                                <EasingColorKeyFrame KeyTime="0"
+                                         Value="{StaticResource SelectedUnfocusedColor}" />
+                                            </ColorAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <ContentPresenter />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Border CornerRadius="200" BorderThickness="3" Margin="0,0,0,-1.2" Height="414" VerticalAlignment="Top">
+        <Border.BorderBrush>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF2400B1" Offset="0.112"/>
+                <GradientStop Color="#FFBF3D3D" Offset="0.838"/>
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+        <Border.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black" Offset="1"/>
+                <GradientStop Color="#FF44A063" Offset="0.237"/>
+            </LinearGradientBrush>
+        </Border.Background>
+        <StackPanel Margin="-6.2,-3.2,-0.6,-2.8" MouseLeftButtonDown="customWindow_MouseLeftButtonDown">
+            <Grid Height="86" HorizontalAlignment="Center" Width="920">
+                <Label Content="Braus Airways" Foreground="White" FontSize="48"  FontFamily="Viner Hand ITC" Margin="242,0,222,2" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Width="456"/>
+                <Button  Margin="175,10,677,0" Width="66" RenderTransformOrigin="1.168,0.031" Height="66" VerticalAlignment="Top" Click="Button_Click_3">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Images/1.png"/>
+                    </Button.Background>
+                </Button>
+                <Button  Margin="698,10,156,10" Width="66" RenderTransformOrigin="1.168,0.031" Height="66" Click="Button_Click_1">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Images/2.png"/>
+                    </Button.Background>
+                </Button>
+            </Grid>
+            <Grid Height="326" Margin="0,0,0.4,0">
+                <Button x:Name="Exit1" Content="       Home" MouseLeave="Exit3" MouseMove="Exit2" Margin="173,247,588.6,10"
+                Click="Home_Click"
+                FontFamily="Viner Hand ITC" FontWeight="Bold" Foreground="White" BorderBrush="White" 
+                FontSize="20"  HorizontalContentAlignment="Stretch" 
+                Height="69" Cursor="Pen" Width="158" VerticalContentAlignment="Stretch">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                            <GradientStop Color="Black" Offset="0.884"/>
+                            <GradientStop Color="#FFA1A1B9" Offset="0.5"/>
+                            <GradientStop Color="#FFF60D0D" Offset="0.159"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="Login1" Content="        Buy" MouseLeave="Login3" MouseMove="Login2" Margin="582,247,179.6,10"
+                    Click="Button_Click"
+                    FontFamily="Viner Hand ITC" FontWeight="Bold" Foreground="White" BorderBrush="White" 
+                    FontSize="20"  HorizontalContentAlignment="Stretch" 
+                    Height="69" Cursor="Pen" Width="158" VerticalContentAlignment="Stretch" RenderTransformOrigin="1.106,0.565">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                            <GradientStop Color="Black" Offset="0.884"/>
+                            <GradientStop Color="#FFA1A1B9" Offset="0.5"/>
+                            <GradientStop Color="#FFF60D0D" Offset="0.159"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Label Name="TicketOrder" Content="T   i   c   k   e   t                   O     r   d   e   r   i   n   g" FontSize="22"  FontFamily="Viner Hand ITC" HorizontalContentAlignment="Center" Height="44" VerticalAlignment="Top" Margin="173,0,179.6,0" Background="{x:Null}">
+                    <Label.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF00FAFF"/>
+                            <GradientStop Color="#FF390046" Offset="1"/>
+                            <GradientStop Color="White" Offset="0.527"/>
+                        </LinearGradientBrush>
+                    </Label.Foreground>
+                </Label>
+                <Grid Margin="0,35,-0.4,263" Width="920" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="337*"/>
+                        <ColumnDefinition Width="583*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <ComboBox  Text="Місто Відправлення" IsEditable="True" x:Name="C1" Width="120"
+                              HorizontalAlignment="Center" Margin="29,-1,187.6,5" RenderTransformOrigin="0.493,0.619" Height="24" BorderBrush="#FF0600FD" Foreground="White" 
+                        AutomationProperties.HelpText="Натисніть щоб обрати місто" FontSize="10" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Grid.RowSpan="2" IsReadOnly="True"/>
+                    <ComboBox  Text="Місто Прибуття" IsEditable="True" x:Name="C2" Margin="154,-1,62.6,5" Width="120" HorizontalAlignment="Center" Foreground="White"
+                               AutomationProperties.HelpText="Натисніть щоб обрати місто" VerticalContentAlignment="Stretch" Grid.RowSpan="2" HorizontalContentAlignment="Stretch" Height="24" IsReadOnly="True">
+
+                    </ComboBox>
+                    <ComboBox  Text="Дата Відправлення" IsEditable="True" x:Name="C3" Margin="279,-1,521,5"  Width="120" HorizontalAlignment="Center" Foreground="White"
+                               AutomationProperties.HelpText="Натисніть щоб обрати дату" Grid.RowSpan="2" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Height="24" Grid.ColumnSpan="2" IsReadOnly="True"/>
+
+                    <ComboBox  Text="Дата Прибуття" IsEditable="True" x:Name="C4" Margin="67.4,-1,396,5" Width="120" HorizontalAlignment="Center" Foreground="White"
+                                AutomationProperties.HelpText="Натисніть щоб обрати дату" Grid.RowSpan="2" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Height="24" Grid.Column="1" IsReadOnly="True"/>
+                    <ComboBox Text="Ціна за квиток" IsEditable="True" x:Name="C5" Margin="317.4,-1,146,5" Width="120" HorizontalAlignment="Center"
+                              AutomationProperties.HelpText="Натисніть щоб обрати ціну" Grid.RowSpan="2" 
+                              HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Foreground="White" 
+                              Height="24" Grid.Column="1" IsReadOnly="True" SelectionChanged="C5_SelectionChanged"/>
+                    <ComboBox  Text="Тип Квитка" IsEditable="True" x:Name="C6" Margin="192.4,-1,271,5" Width="120" HorizontalAlignment="Center" 
+                               Foreground="White" AutomationProperties.HelpText="Натисніть щоб обрати тип" Grid.RowSpan="2" 
+                               HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Height="24" Grid.Column="1" 
+                               IsReadOnly="True" SelectionChanged="C6_SelectionChanged" 
+                               />
+                    <ComboBox  Text="Посадкове місце" IsEditable="True" x:Name="C7" Margin="442.4,-1,21,5" Width="120" HorizontalAlignment="Center" 
+                               Foreground="White" AutomationProperties.HelpText="Натисніть щоб обрати посадкове місце" Grid.RowSpan="2" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Height="24" Grid.Column="1" IsReadOnly="True"/>
+                </Grid>
+                <Label Name="UserName" Content="Label" HorizontalAlignment="Left" Margin="444,326,0,-26" VerticalAlignment="Top"/>
+
+            </Grid>
+        </StackPanel>
+    </Border>
+</Window>

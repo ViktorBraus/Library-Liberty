@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Проект"
        
         mc:Ignorable="d"
-        Title="Authorization" Height="339.2" Width="536.8" WindowStyle="None"
+        Title="Braus Airways" Height="339.2" Width="540" WindowStyle="None" Icon="Images/Icon.png"
         AllowsTransparency="True" Background="Transparent" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="DelAll">
@@ -39,15 +39,24 @@
                 <GradientStop Color="#FF44A063" Offset="0.237"/>
             </LinearGradientBrush>
         </Border.Background>
-        <StackPanel Margin="-3.2,5.8,-2.8,-3.6" MouseLeftButtonDown="CustomWindow_MouseLeftButtonDown">
+        <StackPanel Margin="-3.2,5.8,-2.6,-3.6" MouseLeftButtonDown="CustomWindow_MouseLeftButtonDown">
             <Grid Height="87" Margin="0,0,0.4,0">
-                <Button  Margin="42,41,431,-7" Width="53" RenderTransformOrigin="1.168,0.031" Height="53" VerticalAlignment="Top" Background="Black"/>
+                <Button  Margin="42,41,431,-7" Width="53" RenderTransformOrigin="1.168,0.031" Height="53" VerticalAlignment="Top" Click="Button_Click_1">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Images/1.png"/>
+                    </Button.Background>
+                </Button>
                 <Label Content="Braus Airways" Foreground="White" FontSize="48"  FontFamily="Viner Hand ITC" Margin="95,2,83,0"/>
-                <Button  Margin="430,41,41,-7" Width="53" RenderTransformOrigin="1.168,0.031" Height="53" Background="Black"/>
+                <Button  Margin="431,41,42,-7" Width="53" RenderTransformOrigin="1.168,0.031" Height="53" VerticalAlignment="Top" Click="Button_Click_2">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Images/2.png"/>
+                    </Button.Background>
+                </Button>
             </Grid>
-            <Label Content="Username" Foreground="White" FontSize="24"  FontFamily="Viner Hand ITC"  Margin="116,0,122,0" Height="53" UseLayoutRounding="False" VerticalAlignment="Bottom" Width="290" HorizontalAlignment="Center" HorizontalContentAlignment="Center"  />
+            <Label Name="q1" Content="Username" Foreground="White" FontSize="24"  FontFamily="Viner Hand ITC"  Margin="116,0,122,0" Height="53" UseLayoutRounding="False" VerticalAlignment="Bottom" Width="290" HorizontalAlignment="Center" HorizontalContentAlignment="Center">
 
-            <TextBox Margin="115,0,121.4,0" Background="white" Foreground="white" FontSize="16" HorizontalContentAlignment="Stretch" HorizontalAlignment="Center" Width="290" FontFamily="Viner Hand ITC" Height="31" TextAlignment="Center">
+            </Label>
+            <TextBox Name="_q1" Margin="115,0,121.4,0" Background="white" Foreground="white" FontSize="16" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Width="290" FontFamily="Viner Hand ITC" Height="31" TextAlignment="Center">
                 <TextBox.Template>
                     <ControlTemplate>
                         <Border CornerRadius="12" Padding="2" BorderThickness="1">
@@ -62,8 +71,8 @@
                     </ControlTemplate>
                 </TextBox.Template>
             </TextBox>
-            <Label Content="Password" Foreground="White" FontSize="24"  FontFamily="Viner Hand ITC" Margin="116,0,122,0" Height="44.783" UseLayoutRounding="False" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="290" HorizontalContentAlignment="Center" />
-            <PasswordBox Margin="116,0,122.4,0" Background="white" Foreground="white" FontSize="16" FontFamily="Viner Hand ITC" Height="31">
+            <Label Name="q2" Content="Password" Foreground="White" FontSize="24"  FontFamily="Viner Hand ITC" Margin="116,0,122,0" Height="44.783" UseLayoutRounding="False" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="290" HorizontalContentAlignment="Center" />
+            <PasswordBox Name="_q2" HorizontalContentAlignment="Center" Margin="116,0,122.4,0" Background="white" Foreground="white" FontSize="16" FontFamily="Viner Hand ITC" Height="31">
                 <PasswordBox.Template>
                     <ControlTemplate>
                         <Border CornerRadius="12" Padding="2" BorderThickness="1">
@@ -78,30 +87,37 @@
                     </ControlTemplate>
                 </PasswordBox.Template>
             </PasswordBox>
-            <Grid Margin="101,0,127,0" Height="208">
-                <Button Name="login2" MouseLeave="Login3" MouseMove="Login1" Style="{StaticResource DelAll}" Content="Login" Click="BtnLogin_Click" Margin="0,0,205,139" Width="95.2" 
+            <Grid Margin="82,0,88.8,0" Height="83">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button Name="Login1" MouseLeave="Login3" MouseMove="Login2" Content="Login" Click="BtnLogin_Click" Margin="10,1,248.8,13.2" Width="100" 
                         FontFamily="Viner Hand ITC" FontWeight="Bold" Foreground="White" BorderBrush="White" 
-                        FontSize="20" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" 
+                        FontSize="20" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" 
                         VerticalAlignment="Center" Padding="1" FontStretch="SemiCondensed" Height="69" Cursor="Pen" >
                     <Button.Background>
                         <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
                             <GradientStop Color="Black" Offset="0.884"/>
-                            <GradientStop Color="#FFA2A2C2" Offset="0.5"/>
+                            <GradientStop Color="#FFA1A1B9" Offset="0.5"/>
                             <GradientStop Color="#FFF60D0D" Offset="0.159"/>
                         </LinearGradientBrush>
                     </Button.Background>
                 </Button>
-                <Button  Name="Exit1" MouseLeave="Exit3" MouseMove="Exit2" Content="Exit" Click="EscButton_Click" Margin="0,0,-12.6,139" Height="69" Width="82" FontFamily="Viner Hand ITC" FontWeight="Bold" Foreground="White" BorderBrush="White" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Cursor="Cross">
+                <Button  Name="Exit1" MouseLeave="Exit3" MouseMove="Exit2" Content="Exit" 
+                         Click="EscButton_Click" Margin="0,1,9.8,13.2" Height="69" Width="95" FontFamily="Viner Hand ITC" 
+                         FontWeight="Bold" Foreground="White" BorderBrush="White" FontSize="20" HorizontalAlignment="Right" 
+                         VerticalAlignment="Center" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Cursor="Cross">
                     <Button.Background>
                         <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
                             <GradientStop Color="Black" Offset="0.884"/>
-                            <GradientStop Color="#FFA2A2C2" Offset="0.5"/>
+                            <GradientStop Color="#FFA1A1B9" Offset="0.5"/>
                             <GradientStop Color="#FFF60D0D" Offset="0.159"/>
                         </LinearGradientBrush>
                     </Button.Background>
                 </Button>
                 <Button  Name="Registry1"  MouseLeave="Registry3" MouseMove="Registry2" HorizontalAlignment="Center" VerticalAlignment="Center" 
-                         Content="Registry" Click ="Button_Click" Margin="100,0,74.4,139" Width="124" FontFamily="Viner Hand ITC" 
+                         Content="Registry" Click ="Button_Click" Margin="115,1,109.8,13.2" Width="134" FontFamily="Viner Hand ITC" 
+                         HorizontalContentAlignment="Left"
                          FontWeight="Bold" Foreground="White" BorderBrush="White" FontSize="20"  FontStretch="SemiCondensed" Height="69" Cursor="Hand"  >
                     <Button.RenderTransform>
                         <ScaleTransform ScaleX="1" ScaleY="1" CenterX="100" CenterY="100" />
@@ -109,7 +125,7 @@
                     <Button.Background>
                         <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
                             <GradientStop Color="Black" Offset="0.884"/>
-                            <GradientStop Color="#FFA2A2C2" Offset="0.5"/>
+                            <GradientStop Color="#FFA1A1B9" Offset="0.5"/>
                             <GradientStop Color="#FFF60D0D" Offset="0.159"/>
                         </LinearGradientBrush>
                     </Button.Background>
