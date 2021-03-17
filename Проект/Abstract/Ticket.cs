@@ -9,11 +9,13 @@ namespace Проект.Abstract
 {
     abstract class Ticket
     {
-       public abstract DateTime Departure_date { get; set; }
-       public abstract DateTime Arrive_date { get; set; }
-       public abstract string  From { get; set; }
-       public abstract string To { get; set; }
-       public abstract double Price { get; set; }
-    
+       public abstract string Назва_книги { get; set; }
+       public abstract string Жанр_книги { get; set; }
+       public abstract string Автор { get; set; }
+       public abstract string Нікнейм_Читача { get; set; }
+       public abstract DateTime Дата_Видачі { get; set; }
+       public abstract DateTime Очікувана_Дата_Здачі { get; set; }
+       public abstract DateTime Фактична_Дата_Здачі { get; set; }
+       public abstract double Сумма_Штрафів { get; set; }
     }
  }

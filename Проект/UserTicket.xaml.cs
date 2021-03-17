@@ -21,6 +21,7 @@ using Проект.AbstractFactory.Factory;
 using Проект.AbstractFactory.Product;
 using Проект.AbstractFactory;
 using Проект.Classes;
+using Проект.Abstract;
 
 namespace Проект
 {
@@ -33,21 +34,20 @@ namespace Проект
         string connectionString;
         SqlDataAdapter adapter;
         DataTable TicketsOrder;
-       
+
         public UserTicket()
         {
-            InitializeComponent();  
+            InitializeComponent();
             connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-            using (SqlConnection connection = new SqlConnection(@"Data Source=VIKTORB\SQLEXPRESS;Initial Catalog=Braus Airways;Integrated Security=True"))
+            using (SqlConnection connection = new SqlConnection(@"Data Source=VIKTOR_BRAUS\SQLEXPRESS01;Initial Catalog=Library;Integrated Security=True"))
             {
                 connection.Open();
-                SqlCommand comd1 = new SqlCommand("Select distinct  [Город Отправления] from Билет", connection);
-                SqlCommand comd2 = new SqlCommand("Select distinct  [Город Прибытия] from Билет", connection);
-                SqlCommand comd3 = new SqlCommand("Select distinct  [Дата Отправления] from Билет", connection);
-                SqlCommand comd4 = new SqlCommand("Select distinct  [Дата Прибытия] from Билет", connection);
-                SqlCommand comd5 = new SqlCommand("Select distinct  [Цена за билет] from Билет", connection);
-                SqlCommand comd6 = new SqlCommand("Select distinct  [Тип Билета] from Билет", connection);
-                SqlCommand comd7 = new SqlCommand("Select distinct  [Посадочное Место] from Билет", connection);
+                SqlCommand comd1 = new SqlCommand("Select distinct  Найменування_жанру from Жанри", connection);
+                SqlCommand comd2 = new SqlCommand("Select distinct  Автор from Книги", connection);
+                SqlCommand comd3 = new SqlCommand("Select distinct  Назва from Книги", connection);
+                SqlCommand comd4 = new SqlCommand("Select distinct  Сума_застави from Книги", connection);
+                SqlCommand comd5 = new SqlCommand("Select distinct  Сума_прокату from Книги", connection);
+
                 SqlDataReader DR1 = comd1.ExecuteReader();
                 while (DR1.Read())
                 {
@@ -83,24 +83,10 @@ namespace Проект
 
                 }
                 DR5.Close();
-                SqlDataReader DR6 = comd6.ExecuteReader();
-                while (DR6.Read())
-                {
-                    C6.Items.Add(DR6[0]);
-
-                }
-                DR6.Close();
-                SqlDataReader DR7 = comd7.ExecuteReader(); 
-                while (DR7.Read())
-                {
-                    C7.Items.Add(DR7[0]);
-                }
-                DR7.Close();
-                connection.Close();
             }
-            MainWindow a1 = new MainWindow();
-            Account account = Account.GetInstance(null,null,null,null,null,null);
-            UserName.Content = account.Login;
+            //MainWindow a1 = new MainWindow();
+            Account account = Account.GetInstance(null, null, null, null, null, null, null);
+            UserName.Content = "Вітаємо, " + account.NickName;
 
         }
         private void customWindow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -129,189 +115,110 @@ namespace Проект
             DoubleAnimation a1 = new DoubleAnimation(73, TimeSpan.FromMilliseconds(300));
             Exit1.BeginAnimation(HeightProperty, a1);
         }
-    
-        private void C6_SelectionChanged(object sender, EventArgs e)
+        private void C1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (C6.Text!="Тип Квитка" || C6.SelectedValue.ToString() != null)
+            using (SqlConnection connection = new SqlConnection(@"Data Source=VIKTOR_BRAUS\SQLEXPRESS01;Initial Catalog=Library;Integrated Security=True"))
             {
-                if (C6.SelectedValue.ToString() != "Тип Квитка")
+                connection.Open();
+                SqlCommand comd6 = new SqlCommand("Select distinct Автор from Книги,Жанри where Найменування_жанру='" + C1.SelectedValue.ToString() + "' and Код_=Код_Жанру", connection);
+                SqlDataReader DR6 = comd6.ExecuteReader();
+                C2.Items.Clear();
+                while (DR6.Read())
                 {
-                    string s = C6.SelectedValue.ToString();
-                    using (SqlConnection connection = new SqlConnection(@"Data Source=VIKTORB\SQLEXPRESS;Initial Catalog=Braus Airways;Integrated Security=True"))
-                    {
-                        connection.Open();//"Select Count (*) From Регистрация where Username = '" + _username + "'"
-                        SqlCommand comd5 = new SqlCommand("Select distinct [Цена за билет] from Билет where [Тип Билета]='" + s + "'", connection);
-                        SqlCommand comd4 = new SqlCommand("Select distinct [Цена за билет] from Билет ", connection);
-                        if (s == "Эконом")
-                        {
-                            SqlDataReader DR5 = comd5.ExecuteReader();
-                            while (DR5.Read())
-                            {
-
-                                C5.Items.Add(DR5[0]);
-
-                            }
-                            DR5.Close();
-                            SqlDataReader DR4 = comd4.ExecuteReader();
-                            while (DR4.Read())
-                            {
-
-                                C5.Items.Remove(DR4[0]);
-                            }
-                            DR4.Close();
-                            
-
-                        }
-                        else if (s == "Бизнес")
-                        {
-                            SqlDataReader DR4 = comd4.ExecuteReader();
-                            while (DR4.Read())
-                            {
-
-                                C5.Items.Remove(DR4[0]);
-                            }
-                            DR4.Close();
-                            SqlDataReader DR6 = comd5.ExecuteReader();
-                            while (DR6.Read())
-                            {
-
-                                C5.Items.Add(DR6[0]);
-
-                            }
-
-                            DR6.Close();
-
-                        }
-                        else if (s == "Первый")
-                        {
-                            SqlDataReader DR4 = comd4.ExecuteReader();
-                            while (DR4.Read())
-                            {
-
-                                C5.Items.Remove(DR4[0]);
-                            }
-                            DR4.Close();
-                            SqlDataReader DR7 = comd5.ExecuteReader();
-                            while (DR7.Read())
-                            {
-
-                                C5.Items.Add(DR7[0]);
-
-                            }
-
-                            DR7.Close();
-
-                        }
-                        connection.Close();
-                    }
+                    C2.Items.Add(DR6[0]);
                 }
-                else if (C6.SelectedValue.ToString() == null)
+                DR6.Close();
+                connection.Close();
+            }
+        }
+        private void C2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (C1.SelectedValue == null)
+            {
+                MessageBox.Show("Спочатку Оберіть Жанр книги.");
+                MessageBox.Show("At first, choose the book jenre.");
+                C1.Text = "Жанр";
+                C2.Text = "Автор";
+            }
+            else
+            {
+                using (SqlConnection connection = new SqlConnection(@"Data Source=VIKTOR_BRAUS\SQLEXPRESS01;Initial Catalog=Library;Integrated Security=True"))
                 {
-                    C6.SelectedValue = "Тип Квитка";
+                    connection.Open();
+                    SqlCommand comd5 = new SqlCommand("Select distinct Назва from Книги,Жанри where Автор ='" + C2.SelectedValue.ToString() + "' and Код_=Код_Жанру", connection);
+                    SqlDataReader DR5 = comd5.ExecuteReader();
+                    C3.Items.Clear();
+                    while (DR5.Read())
+                    {
+
+                        C3.Items.Add(DR5[0]);
+                    }
+                    DR5.Close();
+                    connection.Close();
+                }
+            }
+            
+        }
+
+        private void C3_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (C1.SelectedValue == null)
+            {
+                MessageBox.Show("Спочатку Оберіть Жанр книги.");
+                MessageBox.Show("At first, choose the book jenre.");
+                C1.Text = "Жанр";
+                C2.Text = "Автор";
+                C3.Text = "Назва книги";
+            }
+            else
+            {
+                using (SqlConnection connection = new SqlConnection(@"Data Source=VIKTOR_BRAUS\SQLEXPRESS01;Initial Catalog=Library;Integrated Security=True"))
+                {
+                    connection.Open();
+                    //Select distinct Сума_прокату from Книги,Жанри where Автор ='Джоан Роулінг'and Найменування_жанру='Фентезі'and Назва='Гаррі Поттер і келих вогню';
+                    SqlCommand comd5 = new SqlCommand("Select Сума_застави from Книги,Жанри where Назва ='" + C3.SelectedValue.ToString() + "'and Автор ='" + C2.SelectedValue.ToString() + "' and Найменування_жанру='"+C1.SelectedValue.ToString() +"'", connection);
+                    SqlDataReader DR5 = comd5.ExecuteReader();
+                    C4.Items.Clear();
+                    while (DR5.Read())
+                    {
+                        C4.Items.Add(DR5[0]);
+                    }
+                    DR5.Close();
+                    connection.Close();
                 }
             }
         }
-        /*private void C5_SelectionChanged(object sender, EventArgs e)
+
+        private void C4_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (C6.Text == "Тип Квитка")
+            if (C1.SelectedValue == null)
             {
-                MessageBox.Show("Спочатку Оберіть тип квитка.");
-                MessageBox.Show("At first, choose the type of ticket.");
-               
-                C5.Text = "Ціна за квиток";
+                MessageBox.Show("Спочатку Оберіть Жанр книги.");
+                MessageBox.Show("At first, choose the book jenre.");
+                C1.Text = "Жанр";
+                C2.Text = "Автор";
+                C3.Text = "Назва книги";
+                C4.Text = "Сума_застави";
             }
-            /*if (C5.Text != "Ціна за квиток" || C5.SelectedValue.ToString() != null)
+            else
             {
-                if (C5.SelectedValue.ToString() != "Ціна за квиток")
+                using (SqlConnection connection = new SqlConnection(@"Data Source=VIKTOR_BRAUS\SQLEXPRESS01;Initial Catalog=Library;Integrated Security=True"))
                 {
-                    string s = C5.SelectedValue.ToString();
-                    using (SqlConnection connection = new SqlConnection(@"Data Source=VIKTORB\SQLEXPRESS;Initial Catalog=Braus Airways;Integrated Security=True"))
+                    connection.Open();
+                    //Select distinct Сума_прокату from Книги,Жанри where Автор ='Джоан Роулінг'and Найменування_жанру='Фентезі'and Назва='Гаррі Поттер і келих вогню';
+                    SqlCommand comd5 = new SqlCommand("Select Сума_прокату from Книги,Жанри where Назва ='" + C3.SelectedValue.ToString() + "'and Автор ='" + C2.SelectedValue.ToString() + "' and Найменування_жанру='" + C1.SelectedValue.ToString() + "'", connection);
+                    SqlDataReader DR5 = comd5.ExecuteReader();
+                    C5.Items.Clear();
+                    while (DR5.Read())
                     {
-                        connection.Open();//"Select Count (*) From Регистрация where Username = '" + _username + "'"
-                        SqlCommand comd5 = new SqlCommand("Select distinct [Тип Билета] from Билет where [Цена за билет]='" + s + "'", connection);
-                        SqlCommand comd4 = new SqlCommand("Select distinct [Тип Билета] from Билет ", connection);
-                        if (s == "1000" || s == "1200")
-                        {
-                            SqlDataReader DR4 = comd4.ExecuteReader();
-                            while (DR4.Read())
-                            {
-
-                                C6.Items.Remove(DR4[0]);
-                            }
-                            DR4.Close();
-                            SqlDataReader DR5 = comd5.ExecuteReader();
-                            while (DR5.Read())
-                            {
-
-                                C6.Items.Add(DR5[0]);
-
-                            }
-                            DR5.Close();
-
-                        }
-                        else if (s == "1500")
-                        {
-                            SqlDataReader DR4 = comd4.ExecuteReader();
-                            while (DR4.Read())
-                            {
-
-                                C6.Items.Remove(DR4[0]);
-                            }
-                            DR4.Close();
-                            SqlDataReader DR6 = comd5.ExecuteReader();
-                            while (DR6.Read())
-                            {
-
-                                C6.Items.Add(DR6[0]);
-
-                            }
-
-                            DR6.Close();
-
-                        }
-                        else if (s == "2000")
-                        {
-                            SqlDataReader DR4 = comd4.ExecuteReader();
-                            while (DR4.Read())
-                            {
-
-                                C6.Items.Remove(DR4[0]);
-                            }
-                            DR4.Close();
-                            SqlDataReader DR7 = comd5.ExecuteReader();
-                            while (DR7.Read())
-                            {
-
-                                C6.Items.Add(DR7[0]);
-
-                            }
-
-                            DR7.Close();
-
-                        }
-                        connection.Close();
+                        C5.Items.Add(DR5[0]);
                     }
-                }
-                else if (C5.SelectedValue.ToString() == null)
-                {
-                    C5.SelectedValue = "Ціна за квиток";
+                    DR5.Close();
+                    connection.Close();
                 }
             }
-        }*/
-       
-       private void C5_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (C6.Text == "Тип Квитка" || C6.SelectedValue==null)
-            {
-                MessageBox.Show("Спочатку Оберіть тип квитка.");
-                MessageBox.Show("At first, choose the type of ticket.");
-                C5.SelectedValue = "Ціна за квиток";
-                C5.SelectedValue = "Ціна за квиток";
-                C5.Text = "Ціна за квиток";
-            }
-           
         }
-    
+
         private void Exit3(object sender, EventArgs e)
         {
             DoubleAnimation a = new DoubleAnimation(158, TimeSpan.FromMilliseconds(500));
@@ -326,79 +233,75 @@ namespace Проект
             adapter.Update(TicketsOrder);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button1_Click(object sender, RoutedEventArgs e)
         {
-            if ((C1.Text != "Місто Відправлення") && (C2.Text != "Місто Прибуття") && (C3.Text != "Дата Відправлення")
-                && (C4.Text != "Дата Прибуття") && (C5.Text != "Ціна за квиток")
-                && (C6.Text != "Тип Квитка")&& (C7.Text != "Посадкове місце"))
+            if ((C1.Text != "Жанр книги") && (C2.Text != "Автор") && (C3.Text != "Назва книги")
+                && (C4.Text != "Сума застави") && (C5.Text != "Сума прокату"))
             {
-                Account account = Account.GetInstance1(C1.Text,C2.Text,C3.Text,C4.Text,C6.Text,int.Parse(C5.Text), C7.Text);
-                DataBase_Ticket RStart = new DataBase_Ticket(C1.Text, C2.Text, C3.Text, C4.Text, C6.Text, int.Parse(C5.Text), C7.Text, account.Login);
-                using (SqlConnection connection = new SqlConnection(@"Data Source=VIKTORB\SQLEXPRESS;Initial Catalog=Braus Airways;Integrated Security=True"))
-                {
-                    connection.Open();
-                    SqlCommand comd5 = new SqlCommand("Delete from Билет where [Посадочное Место]='"  + C7.Text + "and [Цена за билет]='"+C5.Text+"'", connection);
-                    connection.Close();
-                }
-                
-                    MessageBox.Show("Білет Куплено.");
-                MessageBox.Show("A ticket was buyed successfully)");
+                Ticket ticket1 = new DefaultTicket();
+                ticket1.Назва_книги = C3.Text;
+                ticket1.Жанр_книги = C1.Text;
+                ticket1.Автор= C2.Text;
+                ticket1.Нікнейм_Читача = UserName.Content.ToString();
+                ticket1.Дата_Видачі = DateTime.Now;
+                ticket1.Очікувана_Дата_Здачі = DateTime.Now.AddDays(14);
+                ticket1.Фактична_Дата_Здачі = new DateTime(); 
+                ticket1.Сумма_Штрафів = 0;
+                //Account account = Account.GetInstance1(C1.Text, C2.Text, C3.Text, C4.Text, C6.Text, int.Parse(C5.Text), int.Parse(C7.Text));
+                //MessageBox.Show(ticket1.From);
+
+                DataBase_Ticket RStart = new DataBase_Ticket(ticket1, UserName.Content.ToString());
+
+                //using (SqlConnection connection = new SqlConnection(@"Data Source=VIKTORB_BRAUS\SQLEXPRESS01;Initial Catalog=Library;Integrated Security=True"))
+                //{
+                //    connection.Open();
+                //    SqlCommand comd5 = new SqlCommand("Delete from Билет where [Тип Билета]='" + C6.Text + "' and [Цена за билет]='" + ticket1.Price + "'and [Посадочное место]='" + ticket1.Place + "'", connection);
+                //    SqlDataReader DR4 = comd5.ExecuteReader();
+                //    DR4.Close();
+                //    connection.Close();
+                //}
+
+                MessageBox.Show("Книга оформлена Успішно.");
+                MessageBox.Show("A book was ordered successfully)");
+                MainWindow a = new MainWindow();
+                a.Show();
+                this.Close();
             }
             else
             {
                 MessageBox.Show("Some of fields was not selected. please check all of them.");
                 MessageBox.Show("Декотрі з полей не були обрані. Будь ласка, оберіть у кожному з них.");
-                C1.Text = "Місто Відправлення";
-                C2.Text = "Місто Прибуття";
-                C3.Text = "Дата Відправлення";
-                C4.Text = "Дата Прибуття";
-                C5.Text = "Ціна за квиток";
-                C6.Text = "Тип Квитка";
-                C7.Text = "Посадкове місце";
+                C1.Text = "Жанр";
+                C2.Text = "Автор";
+                C3.Text = "Назва книги";
+                C4.Text = "Сума_застави";
+                C5.Text = "Сума_прокату";
             }
-            
+
         }
-        private void Home_Click(object sender, RoutedEventArgs e)
+       
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Client UABoy = new Client(new UA());
+
+            Exit1.Content = UABoy.InputYourUTicket7();
+            Login1.Content = UABoy.InputYourUTicket8();
+            TicketOrder.Content = UABoy.InputYourUTicket9();
+
+        }
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            Client USABoy = new Client(new USA());
+            Exit1.Content = USABoy.InputYourUTicket7();
+            Login1.Content = USABoy.InputYourUTicket8();
+            TicketOrder.Content = USABoy.InputYourUTicket9();
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             MainWindow a = new MainWindow();
             a.Show();
             this.Close();
         }
-
-         private void Button_Click_1(object sender, RoutedEventArgs e)
-         {
-             Client UABoy = new Client(new UA());
-            C1.Text = UABoy.InputYourUTicket();
-            C2.Text = UABoy.InputYourUTicket1();
-            C3.Text = UABoy.InputYourUTicket2();
-            C4.Text = UABoy.InputYourUTicket3();
-            C5.Text = UABoy.InputYourUTicket4();
-            C6.Text = UABoy.InputYourUTicket5();
-            C7.Text = UABoy.InputYourUTicket6();
-            Exit1.Content = UABoy.InputYourUTicket7();
-            Login1.Content = UABoy.InputYourUTicket8();
-            TicketOrder.Content =UABoy.InputYourUTicket9();
-
-            // UpdateButton.FontSize = 18;
-            //  DeleteButton.FontSize = 18;
-
-        }
-         private void Button_Click_3(object sender, RoutedEventArgs e)
-         {
-             Client USABoy = new Client(new USA());
-            C1.Text = USABoy.InputYourUTicket();
-            C2.Text = USABoy.InputYourUTicket1();
-            C3.Text = USABoy.InputYourUTicket2();
-            C4.Text = USABoy.InputYourUTicket3();
-            C5.Text = USABoy.InputYourUTicket4();
-            C6.Text = USABoy.InputYourUTicket5();
-            C7.Text = USABoy.InputYourUTicket6();
-            Exit1.Content = USABoy.InputYourUTicket7();
-            Login1.Content = USABoy.InputYourUTicket8();
-            TicketOrder.Content = USABoy.InputYourUTicket9();
-            // UpdateButton.FontSize = 18;
-            //  DeleteButton.FontSize = 18;
-        }
-
     }
 }

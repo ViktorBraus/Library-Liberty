@@ -43,40 +43,42 @@ namespace Проект
         {
             if ((_q1.Text != "") && (_q2.Password != ""))
             {
-                Account account = Account.GetInstance( Name, Surname, Phone, Mail, _q1.Text, _q2.Password);
+                Account account = Account.GetInstance( null,null,null,null,null, _q1.Text, _q2.Password);
+                account.NickName = _q1.Text;
                 account.Password = _q2.Password;
-               using (SqlConnection connection = new SqlConnection(@"Data Source=VIKTORB\SQLEXPRESS;Initial Catalog=Braus Airways;Integrated Security=True"))
+               using (SqlConnection connection = new SqlConnection(@"Data Source=VIKTOR_BRAUS\SQLEXPRESS01;Initial Catalog=Library;Integrated Security=True"))
                 {
                     connection.Open();
-                    SqlCommand CheckInBase = new SqlCommand("SELECT Username FROM Авторизация WHERE Username = 'admin'", connection);
+                    SqlCommand CheckInBase = new SqlCommand("SELECT НікНейм FROM Читачі WHERE НікНейм = 'admin'", connection);
                     SqlDataReader reader = CheckInBase.ExecuteReader();
-                    if (reader.Read()&&(_q1.Text=="admin"))
+                    if (reader.Read()&&(_q1.Text=="admin")&&(_q2.Password=="1234"))
                     {
                         MessageBox.Show("Admin");
-                        TicketSale a = new TicketSale();
-                        a.Show();
+                        TicketSale a1= new TicketSale();
+                        a1.Show();
                         this.Close();
                     }
                     else
                     {
                         reader.Close();
-                        SqlDataAdapter sda = new SqlDataAdapter("Select Count (*) From Авторизация where Username = '" + _q1.Text + "' and Password = '" + _q2.Password + "'", connection);
+                        SqlDataAdapter sda = new SqlDataAdapter("Select Count (*) From Читачі where НікНейм = '" + _q1.Text + "' and Пароль = '" + _q2.Password + "'", connection);
                         DataTable dt = new DataTable();
                         sda.Fill(dt);
                         if (dt.Rows[0][0].ToString() == "1")
                         {
-                            Database_Authorization start = new Database_Authorization(account.Login, account.Password);
+                            Database_Authorization start = new Database_Authorization(account.NickName, account.Password);
+                            UserTicket a = new UserTicket();
+                            a.Show();
                             this.Close();
 
                         }
                         else
                         {
-                            MessageBox.Show("Невірні Дані1324. Будь Ласка, пробуйте ще.");
+                            MessageBox.Show("Невірні Дані. Будь Ласка, пробуйте ще.");
                             MessageBox.Show("Invalid Data. please Retry.");
                             _q1.Text = null;
                             _q2.Password = null;
                         }
-                        this.Close();
                     }
                     connection.Close();
                 }
@@ -92,6 +94,7 @@ namespace Проект
         }
         private void EscButton_Click(object sender, RoutedEventArgs e)
         {
+           
             this.Close(); // закрытие окна
         }
 

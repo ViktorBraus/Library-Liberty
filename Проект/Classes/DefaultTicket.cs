@@ -9,12 +9,14 @@ namespace Проект.Classes
 {
     class DefaultTicket : Ticket
     {
-        public override DateTime Departure_date { get; set; }
-        public override DateTime Arrive_date { get; set; }
-        public override string From { get; set; }
-        public override string To { get; set; }
-       //public override double Price => 75;
-        public override double Price { get { return 75; } set { Price = value; } }
+        public override string Назва_книги { get; set; }
+        public override string Жанр_книги { get; set; }
+        public override string Автор { get; set; }
+        public override string Нікнейм_Читача { get; set; }
+        public override DateTime Дата_Видачі { get; set; }
+        public override DateTime Очікувана_Дата_Здачі { get; set; }
+        public override DateTime Фактична_Дата_Здачі { get; set; }
+        public override double Сумма_Штрафів { get; set; }
         public DefaultTicket () : base() { }
       
 

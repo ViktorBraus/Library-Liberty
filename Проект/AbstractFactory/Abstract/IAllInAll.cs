@@ -23,6 +23,7 @@ namespace Проект.AbstractFactory.Abstract
         public abstract Content CreateRegistry6();
         public abstract Content CreateRegistry7();
         public abstract Content CreateRegistry8();
+        public abstract Content CreateRegistry9();
         ///////////////////////////////////////////////////////////////////
         public abstract Content CreateTicket();
         public abstract Content CreateTicket1();
@@ -33,6 +34,9 @@ namespace Проект.AbstractFactory.Abstract
         public abstract Content CreateTicket6();
         public abstract Content CreateTicket7();
         public abstract Content CreateTicket8();
+        public abstract Content CreateTicket9();
+        public abstract Content CreateTicket10();
+        public abstract Content CreateTicket11();
         ///////////////////////////////////////////////////////////////////
         public abstract Content CreateUTicket();
         public abstract Content CreateUTicket1();

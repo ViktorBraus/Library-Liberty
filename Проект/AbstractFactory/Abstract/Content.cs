@@ -24,6 +24,7 @@ namespace Проект.AbstractFactory.Abstract
         public abstract string LocR6();
         public abstract string LocR7();
         public abstract string LocR8();
+        public abstract string LocR9();
         ///////////////////////////////////////////////////////////////////
         public abstract string LocT();
         public abstract string LocT1();
@@ -34,6 +35,9 @@ namespace Проект.AbstractFactory.Abstract
         public abstract string LocT6();
         public abstract string LocT7();
         public abstract string LocT8();
+        public abstract string LocT9();
+        public abstract string LocT10();
+        public abstract string LocT11();
         ///////////////////////////////////////////////////////////////////
         public abstract string LocTU();
         public abstract string LocTU1();

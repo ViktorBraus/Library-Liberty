@@ -29,71 +29,75 @@ namespace Проект.AbstractFactory.Product
         {
             return "Вихід";
         }
-        ///////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////Реєстрація
         public override string LocR()
-        {
-            return "Ім'я";
-        }
-        public override string LocR1()
         {
             return "Прізвище";
         }
+        public override string LocR1()
+        {
+            return "Ім'я";
+        }
         public override string LocR2()
         {
-            return "Номер Телефону";
+            return "По-Батькові";
         }
         public override string LocR3()
         {
-            return "Електронна Пошта";
+            return "Адреса проживання";
         }
         public override string LocR4()
         {
-            return "Нікнейм";
+            return "Номер телефону";
         }
         public override string LocR5()
         {
-            return "Пароль";
+            return "Нікнейм";
         }
         public override string LocR6()
         {
-            return "Повторний Пароль";
+            return "Пароль";
         }
         public override string LocR7()
         {
-            return "  Головна";
+            return "Повторний Пароль";
         }
         public override string LocR8()
         {
             return "Підтвердити";
         }
-        ///////////////////////////////////////////////////////////////////
+        public override string LocR9()
+        {
+            return "  Головна";
+        }
+        ///////////////////////////////////////////////////////////////////Адмін панель
         public override string LocT()
         {
-            return "Місто Відправлення";
+            return "Прізвище";
         }
         public override string LocT1()
         {
-            return "Місто Прибуття";
+            return "Ім'я";
         }
         public override string LocT2()
         {
-            return "Дата Відправлення";
+            return "По-Батькові";
         }
         public override string LocT3()
         {
-            return "Дата Прибуття";
+            return "Адреса проживання";
         }
         public override string LocT4()
         {
-            return "Тип Квитка";
+            return "Номер телефону";
         }
         public override string LocT5()
         {
-            return "Ціна за квиток";
+            return "Нікнейм";
         }
         public override string LocT6()
         {
-            return "Посадкове Місце";
+            return "Пароль";
         }
         public override string LocT7()
         {
@@ -102,6 +106,18 @@ namespace Проект.AbstractFactory.Product
         public override string LocT8()
         {
             return "    Оновити";
+        }
+        public override string LocT9()
+        {
+            return "Читачі";
+        }
+        public override string LocT10()
+        {
+            return "Книги";
+        }
+        public override string LocT11()
+        {
+            return "Видача книг";
         }
         ///////////////////////////////////////////////////////////////////
         public override string LocTU()
@@ -122,15 +138,15 @@ namespace Проект.AbstractFactory.Product
         }
         public override string LocTU4()
         {
-            return "Тип Квитка";
+            return "Ціна за квиток";
         }
         public override string LocTU5()
         {
-            return "Ціна за квиток";
+            return "Тип Квитка";
         }
         public override string LocTU6()
         {
-            return "Посадкове Місце";
+            return "Посадкове місце";
         }
         public override string LocTU7()
         {
@@ -138,11 +154,11 @@ namespace Проект.AbstractFactory.Product
         }
         public override string LocTU8()
         {
-            return "   Придбати";
+            return "   Замовити";
         }
         public override string LocTU9()
         {
-            return "    П   р   о   д   а   ж            К  в   и   т   к   і   в";
+            return "   П   р   о   к   а   т            К   н   и   г   и";
         }
         //////////////////////////////////////
     }

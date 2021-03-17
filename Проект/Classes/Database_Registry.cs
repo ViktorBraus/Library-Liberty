@@ -23,43 +23,39 @@ namespace Проект.Classes
 {
     class Database_Registry
     {
-        public string _name, _surname, _mail, _username, _password;
-        public string _phone;
-        public Database_Registry(string name, string surname, string phone, string mail, string username, string password)
+        public string _surname, _name, _lastname, _address, _number, _nickname, _password;
+        public Database_Registry(string surname, string name, string lastname, string address, string number, string nickname, string password)
         {
-            _name = name;
             _surname = surname;
-            _phone = phone;
-            _mail = mail;
-            _username = username;
+            _name = name;
+            _lastname = lastname;
+            _address = address;
+            _number = number;
+            _nickname = nickname;
             _password = password;
             Reg();
         }
         public void Reg()
         {
-            using (SqlConnection connection = new SqlConnection(@"Data Source=VIKTORB\SQLEXPRESS;Initial Catalog=Braus Airways;Integrated Security=True"))
+            using (SqlConnection connection = new SqlConnection(@"Data Source=VIKTOR_BRAUS\SQLEXPRESS01;Initial Catalog=Library;Integrated Security=True"))
             {
                 connection.Open();
-                SqlDataAdapter sda = new SqlDataAdapter("Select Count (*) From Регистрация where Username = '" + _username + "'", connection);
+                SqlDataAdapter sda = new SqlDataAdapter("Select Count (*) From Читачі where НікНейм = '" + _nickname + "'", connection);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
                 if (dt.Rows[0][0].ToString() == "0")
                 {
-                    SqlCommand command = new SqlCommand("INSERT INTO Регистрация (Name, Surname,[Phone Number],[E-mail],[Username],Password)"
+                    SqlCommand command = new SqlCommand("INSERT INTO Читачі (Прізвище, [Імя], По_батькові, Адреса, Телефон, НікНейм, Пароль)"
                         +
-                        " VALUES(@Name, @Surname,@Phone,@Mail,@Username,@Password)", connection);
-                    command.Parameters.AddWithValue("Name", _name);
+                        " VALUES(@Surname, @Name,@LastName,@Address,@Number,@NickName,@Password)", connection);
                     command.Parameters.AddWithValue("Surname", _surname);
-                    command.Parameters.AddWithValue("Phone", _phone);
-                    command.Parameters.AddWithValue("Mail", _mail);
-                    command.Parameters.AddWithValue("Username", _username);
+                    command.Parameters.AddWithValue("Name", _name);
+                    command.Parameters.AddWithValue("LastName", _lastname);
+                    command.Parameters.AddWithValue("Address", _address);
+                    command.Parameters.AddWithValue("Number", _number);
+                    command.Parameters.AddWithValue("NickName", _nickname);
                     command.Parameters.AddWithValue("Password", _password);
                     command.ExecuteNonQuery();
-                    SqlCommand command1 = new SqlCommand("INSERT INTO Авторизация (Username,Password)" +
-                        " VALUES(@Username,@Password)", connection);
-                    command1.Parameters.AddWithValue("Username", _username);
-                    command1.Parameters.AddWithValue("Password", _password);
-                    command1.ExecuteNonQuery();
                     MessageBox.Show("Реєстрація пройдена успішно.");
                 }
                 else

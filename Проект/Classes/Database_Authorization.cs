@@ -21,40 +21,38 @@ using Проект.AbstractFactory;
 using System.Data.SqlClient;
 namespace Проект.Classes
 {
-    class Database_Authorization : MainWindow
+    class Database_Authorization
     {
-        MainWindow a1 = new MainWindow();
-        public string _name, _surname, _mail, _username, _password;
-        public string _phone;
-        public Database_Authorization(string Username, string Password)
+
+        public string _password, _nickname;
+        public Database_Authorization(string NickName, string Password)
         {
-            _username = Username;
+            _nickname = NickName;
             _password = Password;
             Log();
         }
         public void Log()
         {
-            Account account = Account.GetInstance(_name, _surname, _phone,_mail, _username, _password);
-            using (SqlConnection connection = new SqlConnection(@"Data Source=VIKTORB\SQLEXPRESS;Initial Catalog=Braus Airways;Integrated Security=True"))
+            Account account = Account.GetInstance(null,null,null,null,null, _nickname, _password);
+            using (SqlConnection connection = new SqlConnection(@"Data Source=VIKTOR_BRAUS\SQLEXPRESS01;Initial Catalog=Library;Integrated Security=True"))
             {
                 
                 connection.Open();
-                SqlDataAdapter sda = new SqlDataAdapter("Select Count (*) From Авторизация where Username = '" + account.Login + "' and Password = '" + account.Password + "'", connection);
+                SqlDataAdapter sda = new SqlDataAdapter("Select Count (*) From Читачі where НікНейм = '" + account.NickName + "' and Пароль = '" + account.Password + "'", connection);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
                 if (dt.Rows[0][0].ToString() == "1")
                 {
-                    MessageBox.Show($"Good Day, {_username}.");
-                    MessageBox.Show($"Доброго дня, {_username}.");
-                    UserTicket a = new UserTicket();
+                    MessageBox.Show($"Good Day, {_nickname}.");
+                    MessageBox.Show($"Доброго дня, {_nickname}.");
+                    /*UserTicket a = new UserTicket();
                     a.Show();
-                    a1.Close();
+                    a1.Close();*/
+
                 }
                 else
                 {
-                    MessageBox.Show("Невірні Дані. Будь Ласка, пробуйте ще.");
-                    MessageBox.Show("Invalid Data. please Retry.");
-                   
+
                 }
                 connection.Close();
             }

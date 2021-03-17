@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Проект"
       mc:Ignorable="d"
-      Title="Braus Airways" Height="566.23" Width="652.137"  Background="Transparent" WindowStartupLocation="CenterScreen" WindowStyle="None" 
+      Title="Braus Airways" Height="645.476" Width="672.588"  Background="Transparent" WindowStartupLocation="CenterScreen" WindowStyle="None" 
         AllowsTransparency="True" Icon="Images/Icon.png" >
     <Window.Resources>
         <Style x:Key="DelAll">
@@ -28,20 +28,20 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Border CornerRadius="200" BorderThickness="3" Margin="10,0,43.6,0" Height="566" VerticalAlignment="Top">
+    <Border CornerRadius="200" BorderThickness="3" Margin="10,0,44,0" Height="635" VerticalAlignment="Top">
         <Border.BorderBrush>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF2400B1" Offset="0.112"/>
-                <GradientStop Color="#FFBF3D3D" Offset="0.838"/>
+                <GradientStop Color="#FFB400FF" Offset="0.112"/>
+                <GradientStop Color="#FF6F3A62" Offset="0.838"/>
             </LinearGradientBrush>
         </Border.BorderBrush>
         <Border.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="Black" Offset="1"/>
-                <GradientStop Color="#FF44A063" Offset="0.237"/>
+                <GradientStop Color="#FF151515" Offset="1"/>
+                <GradientStop Color="#FF7E5791" Offset="0.237"/>
             </LinearGradientBrush>
         </Border.Background>
-        <StackPanel Margin="-3.2,-3.2,-2.8,-2.8" MouseLeftButtonDown="customWindow_MouseLeftButtonDown">
+        <StackPanel Margin="-3.2,-3.2,-2.6,-54.2" MouseLeftButtonDown="customWindow_MouseLeftButtonDown">
 
             <Grid Height="86" Margin="0,0,0.4,0">
                 <Button  Margin="78,34,467,0" Width="53" RenderTransformOrigin="1.168,0.031" Height="53" VerticalAlignment="Top" Click="Button_Click_1">
@@ -49,8 +49,8 @@
                         <ImageBrush ImageSource="Images/1.png"/>
                     </Button.Background>
                 </Button>
-                <Label Content="Braus Airways" Foreground="White" FontSize="48"  FontFamily="Viner Hand ITC" Margin="131,0,44,2"/>
-                <Button  Margin="467,34,78,0" Width="53" RenderTransformOrigin="1.168,0.031" Height="53" Click="Button_Click_3">
+                <Label Content="Library Liberty" Foreground="White" FontSize="48"  FontFamily="Viner Hand ITC" Margin="141,3,33.2,-1"/>
+                <Button  Margin="491,34,73.2,-1" Width="53" RenderTransformOrigin="1.168,0.031" Height="53" Click="Button_Click_3">
                     <Button.Background>
                         <ImageBrush ImageSource="Images/2.png"/>
                     </Button.Background>
@@ -58,9 +58,9 @@
             </Grid>
             <StackPanel  Background="transparent" Orientation="Horizontal" HorizontalAlignment="Left" 
                          VerticalAlignment="Center" Width="598" Height="40" >
-                <Label Name="_q1" Content="Name" Foreground="White" FontSize="24"  
+                <Label x:Name="Surname" Content="Surname" Foreground="White" FontSize="24"  
                        FontFamily="Viner Hand ITC" Height="44.784" UseLayoutRounding="False" 
-                       VerticalAlignment="Center" Width="227"  
+                       VerticalAlignment="Center" Width="234"  
                        HorizontalAlignment="Left" Margin="81,0,0,0" />
                 <TextBox ToolTip="YourName" Name="a" Height="40" Margin="25,0,-1,-0.2" Width="200" HorizontalAlignment="Left" 
                          VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" Foreground="White" HorizontalContentAlignment="Center" AutomationProperties.HelpText="YourName" Background="White" FontSize="20"  >
@@ -81,9 +81,9 @@
             </StackPanel>
             <Separator Height="12" Background="{x:Null}"></Separator>
             <StackPanel  Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Width="598" Height="40" >
-                <Label Name="_q2" Content="Surname" Foreground="White" FontSize="24"  
+                <Label x:Name="Name" Content="Name" Foreground="White" FontSize="24"  
                        FontFamily="Viner Hand ITC" Height="44.784" UseLayoutRounding="False" 
-                       VerticalAlignment="Center" Width="227"  HorizontalAlignment="Left" Margin="81,0,0,0" />
+                       VerticalAlignment="Center" Width="234"  HorizontalAlignment="Left" Margin="81,0,0,0" />
                 <TextBox  ToolTip="Your second name" Name="a1" Height="40" Margin="25,0,-1,-0.2" Width="200" HorizontalAlignment="Left" 
                          VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" Foreground="White" HorizontalContentAlignment="Center" Background="White" FontSize="20" >
                     <TextBox.Template>
@@ -101,12 +101,56 @@
                     </TextBox.Template>
                 </TextBox>
             </StackPanel>
+            <Separator Height="12" Background="{x:Null}" Margin="0,2,-0.2,2"/>
+            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Width="598" Height="40" >
+                <Label x:Name="LastName" Content="Last Name" Foreground="White" FontSize="24"  
+                       FontFamily="Viner Hand ITC" Height="44.784" UseLayoutRounding="False" VerticalAlignment="Center" 
+                       Width="234"  HorizontalAlignment="Left" Margin="81,-2.392,0,-2.392" />
+                <TextBox ToolTip="soap" x:Name="a2" Height="40" Margin="25,0,-1,0" Width="200" HorizontalAlignment="Left" 
+                         VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" Foreground="White" HorizontalContentAlignment="Center" Background="White" FontSize="20" >
+                    <TextBox.Template>
+                        <ControlTemplate>
+                            <Border CornerRadius="19" Padding="2" BorderThickness="2">
+                                <Border.BorderBrush>
+                                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                        <GradientStop Color="White" Offset="0.755"/>
+                                        <GradientStop Color="#FF14C0B7" Offset="0.259"/>
+                                    </LinearGradientBrush>
+                                </Border.BorderBrush>
+                                <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox>
+            </StackPanel>
+            <Separator Height="12" Background="{x:Null}" Margin="0,2,-0.2,2"/>
+            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Width="598" Height="40" >
+                <Label x:Name="Address" Content="Address" Foreground="White" FontSize="24"  
+                       FontFamily="Viner Hand ITC" Height="44.784" UseLayoutRounding="False" VerticalAlignment="Center" 
+                       Width="234"  HorizontalAlignment="Left" Margin="81,-2.392,0,-2.392" />
+                <TextBox ToolTip="cool name" x:Name="a3" Height="40" Margin="25,0,-1,0" Width="200" HorizontalAlignment="Left" 
+                         VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" Foreground="White" HorizontalContentAlignment="Center" Background="White" FontSize="20" >
+                    <TextBox.Template>
+                        <ControlTemplate>
+                            <Border CornerRadius="19" Padding="2" BorderThickness="2">
+                                <Border.BorderBrush>
+                                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                        <GradientStop Color="White" Offset="0.755"/>
+                                        <GradientStop Color="#FF14C0B7" Offset="0.259"/>
+                                    </LinearGradientBrush>
+                                </Border.BorderBrush>
+                                <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox>
+            </StackPanel>
             <Separator Height="12" Background="{x:Null}"></Separator>
             <StackPanel  Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Width="598" Height="40" >
-                <Label Name="_q3" Content="Phone Number" Foreground="White" 
+                <Label x:Name="Phone_Number" Content="Phone Number" Foreground="White" 
                        FontSize="24"  FontFamily="Viner Hand ITC" Height="44.784" UseLayoutRounding="False" 
-                       VerticalAlignment="Center" Width="227"  HorizontalAlignment="Left" Margin="81,0,0,0" />
-                <TextBox ToolTip="number" MaxLength="13" Name="a2" Height="40" Margin="25,0,-1,-0.2" Width="200" HorizontalAlignment="Left" 
+                       VerticalAlignment="Center" Width="234"  HorizontalAlignment="Left" Margin="81,0,0,0" />
+                <TextBox ToolTip="number" MaxLength="13" Name="a4" Height="40" Margin="25,0,-1,-0.2" Width="200" HorizontalAlignment="Left" 
                          VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" Foreground="White" HorizontalContentAlignment="Center" Background="White" FontSize="20" AutomationProperties.IsOffscreenBehavior="Onscreen" >
                     <TextBox.Template>
                         <ControlTemplate>
@@ -123,12 +167,13 @@
                     </TextBox.Template>
                 </TextBox>
             </StackPanel>
-            <Separator Height="12" Background="{x:Null}"></Separator>
+
+            <Separator Height="12" Background="{x:Null}" Margin="0,2,-0.4,2"/>
             <StackPanel  Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Width="598" Height="40" >
-                <Label Name="_q4" Content="E-mail" Foreground="White" FontSize="24"  
+                <Label x:Name="Nickname" Content="NickName" Foreground="White" FontSize="24"  
                        FontFamily="Viner Hand ITC" Height="44.784" UseLayoutRounding="False" VerticalAlignment="Center" 
-                       Width="227"  HorizontalAlignment="Left" Margin="81,0,0,0" />
-                <TextBox ToolTip="soap" Name="a3" Height="40" Margin="25,0,-1,-0.2" Width="200" HorizontalAlignment="Left" 
+                       Width="234"  HorizontalAlignment="Left" Margin="81,0,0,0" />
+                <TextBox ToolTip="cool name" Name="a5" Height="40" Margin="25,0,-1,-0.2" Width="200" HorizontalAlignment="Left" 
                          VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" Foreground="White" HorizontalContentAlignment="Center" Background="White" FontSize="20" >
                     <TextBox.Template>
                         <ControlTemplate>
@@ -145,34 +190,12 @@
                     </TextBox.Template>
                 </TextBox>
             </StackPanel>
-            <Separator Height="12" Background="{x:Null}"></Separator>
-            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Width="598" Height="40" >
-                <Label Name="_q5" Content="NickName" Foreground="White" FontSize="24"  
-                       FontFamily="Viner Hand ITC" Height="44.784" UseLayoutRounding="False" VerticalAlignment="Center" 
-                       Width="227"  HorizontalAlignment="Left" Margin="81,0,0,0" />
-                <TextBox ToolTip="cool name" Name="a4" Height="40" Margin="25,0,-1,-0.2" Width="200" HorizontalAlignment="Left" 
-                         VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" Foreground="White" HorizontalContentAlignment="Center" Background="White" FontSize="20" >
-                    <TextBox.Template>
-                        <ControlTemplate>
-                            <Border CornerRadius="19" Padding="2" BorderThickness="2">
-                                <Border.BorderBrush>
-                                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                                        <GradientStop Color="White" Offset="0.755"/>
-                                        <GradientStop Color="#FF14C0B7" Offset="0.259"/>
-                                    </LinearGradientBrush>
-                                </Border.BorderBrush>
-                                <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
-                            </Border>
-                        </ControlTemplate>
-                    </TextBox.Template>
-                </TextBox>
-            </StackPanel>
-            <Separator Height="12" Background="{x:Null}"></Separator>
+            <Separator Height="12" Background="{x:Null}" Margin="0,2,-0.4,2"/>
             <StackPanel  Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Width="598" Height="40" >
 
-                <Label Name="_q6" Content="Password" Foreground="White" FontSize="24"  FontFamily="Viner Hand ITC" 
-                       Height="44.784" UseLayoutRounding="False" VerticalAlignment="Center" Width="227"  HorizontalAlignment="Left" Margin="81,0,0,0" />
-                <PasswordBox ToolTip="The hardest pass ever" Name="a5" Height="40" Margin="25,0,-1,0" Width="200" HorizontalAlignment="Left" 
+                <Label x:Name="Password" Content="Password" Foreground="White" FontSize="24"  FontFamily="Viner Hand ITC" 
+                       Height="44.784" UseLayoutRounding="False" VerticalAlignment="Center" Width="234"  HorizontalAlignment="Left" Margin="81,0,0,0" />
+                <PasswordBox ToolTip="The hardest pass ever" Name="a6" Height="40" Margin="25,0,-1,0" Width="200" HorizontalAlignment="Left" 
                     VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" Foreground="White" HorizontalContentAlignment="Center" Background="White" FontSize="20" >
                     <PasswordBox.Template>
                         <ControlTemplate>
@@ -190,11 +213,11 @@
                 </PasswordBox>
 
             </StackPanel>
-            <Separator Height="12" Background="{x:Null}"></Separator>
+            <Separator Height="12" Background="{x:Null}" Margin="0,2,-0.4,2"/>
             <StackPanel  Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Width="598" Height="40" >
-                <Label Name="_q7" Content="Repeat Password" Foreground="White" FontSize="24"  FontFamily="Viner Hand ITC" 
-                       Height="44.784" UseLayoutRounding="False" VerticalAlignment="Center" Width="227"  HorizontalAlignment="Left" Margin="81,0,0,0" />
-                <PasswordBox ToolTip="again pls" Name="a6" Height="40" Margin="25,0,-1,-0.2" Width="200" HorizontalAlignment="Left" 
+                <Label x:Name="repeatPassword" Content="Repeat Password" Foreground="White" FontSize="24"  FontFamily="Viner Hand ITC" 
+                       Height="44.784" UseLayoutRounding="False" VerticalAlignment="Center" Width="234"  HorizontalAlignment="Left" Margin="81,0,0,0" />
+                <PasswordBox ToolTip="again pls" Name="a7" Height="40" Margin="25,0,-1,-0.2" Width="200" HorizontalAlignment="Left" 
                              VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" Foreground="White" HorizontalContentAlignment="Center" AutomationProperties.HelpText="\" Background="White" FontSize="20" >
                     <PasswordBox.Template>
                         <ControlTemplate>
@@ -211,31 +234,35 @@
                     </PasswordBox.Template>
                 </PasswordBox>
             </StackPanel>
-            <Grid Height="102" Margin="0,0,0.4,0">
-                <Button Name="Exit1" Content="       Home" MouseLeave="Exit3" MouseMove="Exit2" Margin="129,17,302,16"
+            <Grid Height="128" Margin="0,0,0.6,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="179*"/>
+                    <ColumnDefinition Width="418*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="Exit1" Content="       Home" MouseLeave="Exit3" MouseMove="Exit2" Margin="133,30,306,29"
                         Click="Button_Click"
                         FontFamily="Viner Hand ITC" FontWeight="Bold" Foreground="White" BorderBrush="White" 
                         FontSize="20"  HorizontalContentAlignment="Center" 
-                        Padding="1"  Height="69" Cursor="Pen" Width="158" 
+                        Padding="1"  Height="69" Cursor="Pen" Width="158" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.501" 
                         >
                     <Button.Background>
                         <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
-                            <GradientStop Color="Black" Offset="0.884"/>
-                            <GradientStop Color="#FFA1A1B9" Offset="0.5"/>
-                            <GradientStop Color="#FFF60D0D" Offset="0.159"/>
+                            <GradientStop Color="#FF141414" Offset="0.884"/>
+                            <GradientStop Color="#FF9B9BA8" Offset="0.5"/>
+                            <GradientStop Color="#FF6C3786" Offset="0.159"/>
                         </LinearGradientBrush>
                     </Button.Background>
                 </Button>
-                <Button Name="Login1" Content="    Submit" MouseLeave="Login3" MouseMove="Login2" Margin="330,17,110,16"
+                <Button x:Name="Login1" Content="    Submit" MouseLeave="Login3" MouseMove="Login2" Margin="151.07,30,109,29"
                         Click="BtnLogin_Click" 
                         FontFamily="Viner Hand ITC" FontWeight="Bold" Foreground="White" BorderBrush="White" 
                         FontSize="20"  HorizontalContentAlignment="Center" 
-                         Padding="1"  Height="69" Cursor="Pen" Width="158" VerticalContentAlignment="Center">
+                         Padding="1"  Height="69" Cursor="Pen" Width="158" VerticalContentAlignment="Center" Grid.Column="1">
                     <Button.Background>
                         <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
-                            <GradientStop Color="Black" Offset="0.884"/>
-                            <GradientStop Color="#FFA1A1B9" Offset="0.5"/>
-                            <GradientStop Color="#FFF60D0D" Offset="0.159"/>
+                            <GradientStop Color="#FF141414" Offset="0.884"/>
+                            <GradientStop Color="#FF9B9BA8" Offset="0.5"/>
+                            <GradientStop Color="#FF6C3786" Offset="0.159"/>
                         </LinearGradientBrush>
                     </Button.Background>
                 </Button>

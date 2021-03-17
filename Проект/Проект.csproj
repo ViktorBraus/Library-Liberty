@@ -89,6 +89,12 @@
     <Compile Include="AbstractFactory\Product\LUSA.cs" />
     <Compile Include="Abstract\IBuilder.cs" />
     <Compile Include="Abstract\Ticket.cs" />
+    <Compile Include="AdminBooksTable.xaml.cs">
+      <DependentUpon>AdminBooksTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminIssuance.xaml.cs">
+      <DependentUpon>AdminIssuance.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Classes\Database_Authorization.cs" />
     <Compile Include="Classes\Database_Registry.cs" />
     <Compile Include="Classes\DataBase_Ticket.cs" />
@@ -105,6 +111,14 @@
     <Compile Include="UserTicket.xaml.cs">
       <DependentUpon>UserTicket.xaml</DependentUpon>
     </Compile>
+    <Page Include="AdminBooksTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminIssuance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -114,13 +128,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Classes\BisnessTicket.cs" />
     <Compile Include="Classes\Builder.cs" />
     <Compile Include="Classes\DefaultTicket.cs" />
     <Compile Include="Abstract\TicketDecorator.cs" />
     <Compile Include="Classes\DiscountMaker.cs" />
-    <Compile Include="Classes\EkonomTicket.cs" />
-    <Compile Include="Classes\FirstClassTicket.cs" />
     <Page Include="Registry.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -66,6 +66,10 @@ namespace Проект.AbstractFactory.Factory
         {
             return new LUA();
         }
+        public override Content CreateRegistry9()
+        {
+            return new LUA();
+        }
         ///////////////////////////////////////////////////////////////////
         public override Content CreateTicket()
         {
@@ -100,6 +104,18 @@ namespace Проект.AbstractFactory.Factory
             return new LUA();
         }
         public override Content CreateTicket8()
+        {
+            return new LUA();
+        }
+        public override Content CreateTicket9()
+        {
+            return new LUA();
+        }
+        public override Content CreateTicket10()
+        {
+            return new LUA();
+        }
+        public override Content CreateTicket11()
         {
             return new LUA();
         }

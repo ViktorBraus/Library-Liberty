@@ -12,8 +12,8 @@ namespace Проект.Classes
         private List<Ticket> Tickets = new List<Ticket>();
         public void AddWithDiscount(Ticket ticket, int Discount)
         {
-            ticket.Price -= ticket.Price * Discount / 100;
-            Tickets.Add(ticket);
+            //ticket.Price -= ticket.Price * Discount / 100;
+            //Tickets.Add(ticket);
         }
         public List<Ticket> GetTickets() { return Tickets; }
     }

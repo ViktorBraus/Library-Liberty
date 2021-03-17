@@ -29,9 +29,10 @@ namespace Проект
     /// </summary>
     public partial class TicketSale : Window
     {
+
         string connectionString;
         SqlDataAdapter adapter;
-        DataTable TicketsSale;
+        DataTable Readers;
         public TicketSale()
         {
             InitializeComponent();
@@ -44,8 +45,8 @@ namespace Проект
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            string sql = "SELECT * FROM Билет";
-            TicketsSale = new DataTable();
+            string sql = "SELECT * FROM Читачі";
+            Readers = new DataTable();
             SqlConnection connection = null;
             try
             {
@@ -56,19 +57,20 @@ namespace Проект
                 // установка команды на добавление для вызова хранимой процедуры
                 adapter.InsertCommand = new SqlCommand("sp_InsertPhone1", connection);
                 adapter.InsertCommand.CommandType = CommandType.StoredProcedure;
-                adapter.InsertCommand.Parameters.Add(new SqlParameter("@TownFrom", SqlDbType.NChar, 20, "Город Отправления"));
-                adapter.InsertCommand.Parameters.Add(new SqlParameter("@TownTo", SqlDbType.NChar, 20, "Город Прибытия"));
-                adapter.InsertCommand.Parameters.Add(new SqlParameter("@DateFrom", SqlDbType.Date, 0, "Дата Отправления"));
-                adapter.InsertCommand.Parameters.Add(new SqlParameter("@DateTo", SqlDbType.Date, 0, "Дата Прибытия"));
-                adapter.InsertCommand.Parameters.Add(new SqlParameter("@TypeTicket", SqlDbType.NChar, 10, "Тип Билета"));
-                adapter.InsertCommand.Parameters.Add(new SqlParameter("@Price", SqlDbType.Int, 0, "Цена за билет"));
-                adapter.InsertCommand.Parameters.Add(new SqlParameter("@Place", SqlDbType.Int, 0, "Посадочное Место"));
-                SqlParameter parameter = adapter.InsertCommand.Parameters.Add("@Id", SqlDbType.Int, 0, "Id");
+                adapter.InsertCommand.Parameters.Add(new SqlParameter("@Прізвище", SqlDbType.NVarChar, 50, "Прізвище"));
+                adapter.InsertCommand.Parameters.Add(new SqlParameter("@Імя", SqlDbType.NVarChar, 50, "Ім'я"));
+                adapter.InsertCommand.Parameters.Add(new SqlParameter("@По_батькові", SqlDbType.NVarChar, 0, "По-батькові"));
+                adapter.InsertCommand.Parameters.Add(new SqlParameter("@Адреса", SqlDbType.NVarChar, 0, "Дата Адреса Проживання"));
+                adapter.InsertCommand.Parameters.Add(new SqlParameter("@Телефон", SqlDbType.NVarChar, 10, "Телефон"));
+                adapter.InsertCommand.Parameters.Add(new SqlParameter("@Код_Категорії", SqlDbType.Int, 0, "Код Категорії"));
+                adapter.InsertCommand.Parameters.Add(new SqlParameter("@НікНейм", SqlDbType.NVarChar, 0, "НікНейм"));
+                adapter.InsertCommand.Parameters.Add(new SqlParameter("@Пароль", SqlDbType.NVarChar, 0, "Пароль"));
+                SqlParameter parameter = adapter.InsertCommand.Parameters.Add("@Код", SqlDbType.Int, 0, "Id");
                 parameter.Direction = ParameterDirection.Output;
 
                 connection.Open();
-                adapter.Fill(TicketsSale);
-                Tickets.ItemsSource = TicketsSale.DefaultView;
+                adapter.Fill(Readers);
+                Tickets.ItemsSource = Readers.DefaultView;
             }
             catch (Exception ex)
             {
@@ -83,7 +85,7 @@ namespace Проект
         private void UpdateDB()
         {
             SqlCommandBuilder comandbuilder = new SqlCommandBuilder(adapter);
-            adapter.Update(TicketsSale);
+            adapter.Update(Readers);
         }
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
@@ -141,8 +143,8 @@ namespace Проект
             DoubleAnimation a1 = new DoubleAnimation(64, TimeSpan.FromMilliseconds(500));
             DeleteButton.BeginAnimation(HeightProperty, a1);
         }
-        
-    private void Button_Click(object sender, RoutedEventArgs e)
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             MainWindow a = new MainWindow();
             a.Show();
@@ -157,35 +159,49 @@ namespace Проект
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Client UABoy = new Client(new UA());
-            s.Header = UABoy.InputYourTicket();
-            s1.Header = UABoy.InputYourTicket1();
-            s2.Header = UABoy.InputYourTicket2();
-            s3.Header = UABoy.InputYourTicket3();
-            s4.Header = UABoy.InputYourTicket4();
-            s5.Header = UABoy.InputYourTicket5();
-            s6.Header = UABoy.InputYourTicket6();
+            readerstable.Content = UABoy.InputYourTicket9();
+            booksstable.Content = UABoy.InputYourTicket10();
+            bookissuancetable.Content = UABoy.InputYourTicket11();
             DeleteButton.Content = UABoy.InputYourTicket7();
             UpdateButton.Content = UABoy.InputYourTicket8();
-            Exit1.Content = UABoy.InputYourRegistry7();
-           // UpdateButton.FontSize = 18;
-          //  DeleteButton.FontSize = 18;
+            Exit1.Content = UABoy.InputYourRegistry9();
+            // UpdateButton.FontSize = 18;
+            //  DeleteButton.FontSize = 18;
 
         }
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             Client USABoy = new Client(new USA());
-            s.Header = USABoy.InputYourTicket();
-            s1.Header = USABoy.InputYourTicket1();
-            s2.Header = USABoy.InputYourTicket2();
-            s3.Header = USABoy.InputYourTicket3();
-            s4.Header = USABoy.InputYourTicket4();
-            s5.Header = USABoy.InputYourTicket5();
-            s6.Header = USABoy.InputYourTicket6();
             DeleteButton.Content = USABoy.InputYourTicket7();
             UpdateButton.Content = USABoy.InputYourTicket8();
-            Exit1.Content = USABoy.InputYourRegistry7();
+            readerstable.Content = USABoy.InputYourTicket9();
+            booksstable.Content = USABoy.InputYourTicket10();
+            bookissuancetable.Content = USABoy.InputYourTicket11();
+            bookissuancetable.FontSize = 15;
+            Exit1.Content = USABoy.InputYourRegistry9();
             // UpdateButton.FontSize = 18;
             //  DeleteButton.FontSize = 18;
+        }
+
+        private void readerstable_Click(object sender, RoutedEventArgs e)
+        {
+            TicketSale a = new TicketSale();
+            a.Show();
+            this.Close();
+        }
+
+        private void booksstable_Click(object sender, RoutedEventArgs e)
+        {
+            AdminBooksTable a = new AdminBooksTable();
+            a.Show();
+            this.Close();
+        }
+
+        private void bookissuancetable_Click(object sender, RoutedEventArgs e)
+        {
+            AdminIssuance a = new AdminIssuance();
+            a.Show();
+            this.Close();
         }
     }
 }

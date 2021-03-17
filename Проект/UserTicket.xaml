@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Background="Transparent" WindowStartupLocation="CenterScreen" WindowStyle="None" 
         AllowsTransparency="True"
-        Title="Braus Airways" Height="412.8" Width="919.695" HorizontalAlignment="Center">
+        Title="Braus Airways" Height="412.8" Width="797.972" HorizontalAlignment="Center">
     <Window.Resources>
         <Style x:Key="{x:Type ComboBox}"
        TargetType="{x:Type ComboBox}">
@@ -156,7 +156,8 @@
             <Style.Triggers>
                 <Trigger Property="IsSelected" Value="True">
                     <Setter Property="Background" >
-                        <Setter.Value><!--FF5E1A66-->
+                        <Setter.Value>
+                            <!--FF5E1A66-->
                             <SolidColorBrush Color="#FF073A0C" Opacity="0.4"/>
                         </Setter.Value>
                     </Setter>
@@ -207,102 +208,169 @@
     <Border CornerRadius="200" BorderThickness="3" Margin="0,0,0,-1.2" Height="414" VerticalAlignment="Top">
         <Border.BorderBrush>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF2400B1" Offset="0.112"/>
-                <GradientStop Color="#FFBF3D3D" Offset="0.838"/>
+                <GradientStop Color="#FFB400FF" Offset="0.112"/>
+                <GradientStop Color="#FF6F3A62" Offset="0.838"/>
             </LinearGradientBrush>
         </Border.BorderBrush>
         <Border.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="Black" Offset="1"/>
-                <GradientStop Color="#FF44A063" Offset="0.237"/>
+                <GradientStop Color="#FF151515" Offset="1"/>
+                <GradientStop Color="#FF7E5791" Offset="0.237"/>
             </LinearGradientBrush>
         </Border.Background>
         <StackPanel Margin="-6.2,-3.2,-0.6,-2.8" MouseLeftButtonDown="customWindow_MouseLeftButtonDown">
-            <Grid Height="86" HorizontalAlignment="Center" Width="920">
-                <Label Content="Braus Airways" Foreground="White" FontSize="48"  FontFamily="Viner Hand ITC" Margin="242,0,222,2" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Width="456"/>
-                <Button  Margin="175,10,677,0" Width="66" RenderTransformOrigin="1.168,0.031" Height="66" VerticalAlignment="Top" Click="Button_Click_3">
+            <Grid Height="86" HorizontalAlignment="Center" Width="798" Margin="0,0,-0.4,0">
+                <Label Content="Library Liberty" Foreground="White" FontSize="48"  FontFamily="Viner Hand ITC" Margin="181,0,161,2" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Width="456"/>
+                <Button  Margin="136,10,596,0" Width="66" RenderTransformOrigin="1.168,0.031" Height="66" VerticalAlignment="Top" Click="Button_Click_3">
                     <Button.Background>
                         <ImageBrush ImageSource="Images/1.png"/>
                     </Button.Background>
                 </Button>
-                <Button  Margin="698,10,156,10" Width="66" RenderTransformOrigin="1.168,0.031" Height="66" Click="Button_Click_1">
+                <Button  Margin="594,10,138,10" Width="66" RenderTransformOrigin="1.168,0.031" Height="66" Click="Button_Click_1">
                     <Button.Background>
                         <ImageBrush ImageSource="Images/2.png"/>
                     </Button.Background>
                 </Button>
             </Grid>
-            <Grid Height="326" Margin="0,0,0.4,0">
-                <Button x:Name="Exit1" Content="       Home" MouseLeave="Exit3" MouseMove="Exit2" Margin="173,247,588.6,10"
-                Click="Home_Click"
+            <StackPanel>
+                <Grid Height="326" Margin="0,0,-0.4,0" HorizontalAlignment="Left" Width="798">
+                    <Button x:Name="Exit1" Content="       Home" MouseLeave="Exit3" MouseMove="Exit2" Margin="176,247,464,10"
+                Click="Button_Click"
                 FontFamily="Viner Hand ITC" FontWeight="Bold" Foreground="White" BorderBrush="White" 
                 FontSize="20"  HorizontalContentAlignment="Stretch" 
                 Height="69" Cursor="Pen" Width="158" VerticalContentAlignment="Stretch">
-                    <Button.Background>
-                        <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
-                            <GradientStop Color="Black" Offset="0.884"/>
-                            <GradientStop Color="#FFA1A1B9" Offset="0.5"/>
-                            <GradientStop Color="#FFF60D0D" Offset="0.159"/>
-                        </LinearGradientBrush>
-                    </Button.Background>
-                </Button>
-                <Button x:Name="Login1" Content="        Buy" MouseLeave="Login3" MouseMove="Login2" Margin="582,247,179.6,10"
-                    Click="Button_Click"
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                                <GradientStop Color="#FF141414" Offset="0.884"/>
+                                <GradientStop Color="#FF9B9BA8" Offset="0.5"/>
+                                <GradientStop Color="#FF6C3786" Offset="0.159"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="Login1" Content="        Order" MouseLeave="Login3" MouseMove="Login2" Margin="465,247,175,10"
+                    Click="Button1_Click"
                     FontFamily="Viner Hand ITC" FontWeight="Bold" Foreground="White" BorderBrush="White" 
                     FontSize="20"  HorizontalContentAlignment="Stretch" 
                     Height="69" Cursor="Pen" Width="158" VerticalContentAlignment="Stretch" RenderTransformOrigin="1.106,0.565">
-                    <Button.Background>
-                        <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
-                            <GradientStop Color="Black" Offset="0.884"/>
-                            <GradientStop Color="#FFA1A1B9" Offset="0.5"/>
-                            <GradientStop Color="#FFF60D0D" Offset="0.159"/>
-                        </LinearGradientBrush>
-                    </Button.Background>
-                </Button>
-                <Label Name="TicketOrder" Content="T   i   c   k   e   t                   O     r   d   e   r   i   n   g" FontSize="22"  FontFamily="Viner Hand ITC" HorizontalContentAlignment="Center" Height="44" VerticalAlignment="Top" Margin="173,0,179.6,0" Background="{x:Null}">
-                    <Label.Foreground>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="#FF00FAFF"/>
-                            <GradientStop Color="#FF390046" Offset="1"/>
-                            <GradientStop Color="White" Offset="0.527"/>
-                        </LinearGradientBrush>
-                    </Label.Foreground>
-                </Label>
-                <Grid Margin="0,35,-0.4,263" Width="920" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="337*"/>
-                        <ColumnDefinition Width="583*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="0*"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <ComboBox  Text="Місто Відправлення" IsEditable="True" x:Name="C1" Width="120"
-                              HorizontalAlignment="Center" Margin="29,-1,187.6,5" RenderTransformOrigin="0.493,0.619" Height="24" BorderBrush="#FF0600FD" Foreground="White" 
-                        AutomationProperties.HelpText="Натисніть щоб обрати місто" FontSize="10" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Grid.RowSpan="2" IsReadOnly="True"/>
-                    <ComboBox  Text="Місто Прибуття" IsEditable="True" x:Name="C2" Margin="154,-1,62.6,5" Width="120" HorizontalAlignment="Center" Foreground="White"
-                               AutomationProperties.HelpText="Натисніть щоб обрати місто" VerticalContentAlignment="Stretch" Grid.RowSpan="2" HorizontalContentAlignment="Stretch" Height="24" IsReadOnly="True">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                                <GradientStop Color="#FF141414" Offset="0.884"/>
+                                <GradientStop Color="#FF9B9BA8" Offset="0.5"/>
+                                <GradientStop Color="#FF6C3786" Offset="0.159"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Label Name="TicketOrder" Content="B    O   O   K       R   O   L   L   I   N   G" FontSize="22"  FontFamily="Viner Hand ITC" HorizontalContentAlignment="Center" Height="44" VerticalAlignment="Bottom" Margin="176,0,175,282" Background="{x:Null}">
+                        <Label.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF4E7FD1" Offset="0.103"/>
+                                <GradientStop Color="White" Offset="1"/>
+                                <GradientStop Color="White" Offset="0.527"/>
+                            </LinearGradientBrush>
+                        </Label.Foreground>
+                    </Label>
+                    <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Margin="45,49,464,117" Width="289" Height="160" >
+                        <Grid.BindingGroup>
+                            <BindingGroup/>
+                        </Grid.BindingGroup>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0*"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0*"/>
+                            <RowDefinition Height="238.4"/>
+                        </Grid.RowDefinitions>
+                        <ComboBox  Text="Жанр книги" IsEditable="True" x:Name="C1" Width="269"
+                              HorizontalAlignment="Center" Margin="10,5,9.8,209.4" RenderTransformOrigin="0.493,0.619" BorderBrush="#FF0600FD" Foreground="White" 
+                        AutomationProperties.HelpText="Натисніть щоб обрати жанр" FontSize="10" Grid.RowSpan="2" IsReadOnly="True" Grid.Column="1" SelectionChanged="C1_SelectionChanged">
+                            <ComboBox.Resources>
+                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Red"/>
+                            </ComboBox.Resources>
+                            <ComboBox.ItemContainerStyle>
+                                <Style TargetType="{x:Type ComboBoxItem}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="true">
+                                            <Setter Property="BorderBrush" Value="Red" />
+                                            <Setter Property="BorderThickness" Value="2" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ComboBox.ItemContainerStyle>
+                        </ComboBox>
+                        <ComboBox  Text="Автор" IsEditable="True" x:Name="C2" Margin="10,34,9.8,180.4" Width="269" HorizontalAlignment="Center" Foreground="White"
+                               AutomationProperties.HelpText="Натисніть щоб обрати автора" VerticalContentAlignment="Stretch" Grid.RowSpan="2" HorizontalContentAlignment="Stretch" IsReadOnly="True" Grid.Column="1" SelectionChanged="C2_SelectionChanged">
+                            <ComboBox.Resources>
+                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Red"/>
+                            </ComboBox.Resources>
+                            <ComboBox.ItemContainerStyle>
+                                <Style TargetType="{x:Type ComboBoxItem}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="true">
+                                            <Setter Property="BorderBrush" Value="Red" />
+                                            <Setter Property="BorderThickness" Value="2" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ComboBox.ItemContainerStyle>
+                        </ComboBox>
+                        <ComboBox  Text="Назва книги" IsEditable="True" x:Name="C3" Margin="10,63,9.8,151.4"  Width="269" HorizontalAlignment="Center" Foreground="White"
+                              AutomationProperties.HelpText="Натисніть щоб обрати назву" Grid.RowSpan="2" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" IsReadOnly="True" Grid.Column="1" SelectionChanged="C3_SelectionChanged" Cursor="Hand" MinWidth="269" VerticalAlignment="Center">
+                            <ComboBox.Resources>
+                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Red"/>
+                            </ComboBox.Resources>
+                            <ComboBox.ItemContainerStyle>
+                                <Style TargetType="{x:Type ComboBoxItem}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="true">
+                                            <Setter Property="BorderBrush" Value="Red" />
+                                            <Setter Property="BorderThickness" Value="2" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ComboBox.ItemContainerStyle>
+                        </ComboBox>
+                        <ComboBox  Text="Сума прокату" IsEditable="True" x:Name="C5" Margin="10,126,9.8,88.4" Width="269" HorizontalAlignment="Center" Foreground="White"
+                                AutomationProperties.HelpText="Натисніть щоб обрати суму прокату" Grid.RowSpan="2" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" IsReadOnly="True" Grid.Column="1"
+                                   >
+                            <ComboBox.Resources>
+                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Red"/>
+                            </ComboBox.Resources>
+                            <ComboBox.ItemContainerStyle>
+                                <Style TargetType="{x:Type ComboBoxItem}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="true">
+                                            <Setter Property="BorderBrush" Value="Red" />
+                                            <Setter Property="BorderThickness" Value="2" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ComboBox.ItemContainerStyle>
+                        </ComboBox>
+                        <ComboBox  Text="Сума застави" IsEditable="True" x:Name="C4" Margin="10,97,9.8,0" Width="269" HorizontalAlignment="Center" 
+                               Foreground="White" AutomationProperties.HelpText="Натисніть щоб обрати суму застави" Grid.RowSpan="2" 
+                               HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Height="24" 
+                               IsReadOnly="True"  VerticalAlignment="Top" Grid.Column="1" SelectionChanged="C4_SelectionChanged"
+                               >
+                            <ComboBox.Resources>
+                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Red"/>
+                            </ComboBox.Resources>
+                            <ComboBox.ItemContainerStyle>
+                                <Style TargetType="{x:Type ComboBoxItem}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="true">
+                                            <Setter Property="BorderBrush" Value="Red" />
+                                            <Setter Property="BorderThickness" Value="2" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ComboBox.ItemContainerStyle>
+                        </ComboBox>
+                    </Grid>
+                    <Label FontSize="20px" FontFamily="Viner Hand ITC" Name="UserName" Content="Label" HorizontalAlignment="Left" Margin="529,49,0,0" VerticalAlignment="Top" Width="auto"/>
 
-                    </ComboBox>
-                    <ComboBox  Text="Дата Відправлення" IsEditable="True" x:Name="C3" Margin="279,-1,521,5"  Width="120" HorizontalAlignment="Center" Foreground="White"
-                               AutomationProperties.HelpText="Натисніть щоб обрати дату" Grid.RowSpan="2" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Height="24" Grid.ColumnSpan="2" IsReadOnly="True"/>
-
-                    <ComboBox  Text="Дата Прибуття" IsEditable="True" x:Name="C4" Margin="67.4,-1,396,5" Width="120" HorizontalAlignment="Center" Foreground="White"
-                                AutomationProperties.HelpText="Натисніть щоб обрати дату" Grid.RowSpan="2" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Height="24" Grid.Column="1" IsReadOnly="True"/>
-                    <ComboBox Text="Ціна за квиток" IsEditable="True" x:Name="C5" Margin="317.4,-1,146,5" Width="120" HorizontalAlignment="Center"
-                              AutomationProperties.HelpText="Натисніть щоб обрати ціну" Grid.RowSpan="2" 
-                              HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Foreground="White" 
-                              Height="24" Grid.Column="1" IsReadOnly="True" SelectionChanged="C5_SelectionChanged"/>
-                    <ComboBox  Text="Тип Квитка" IsEditable="True" x:Name="C6" Margin="192.4,-1,271,5" Width="120" HorizontalAlignment="Center" 
-                               Foreground="White" AutomationProperties.HelpText="Натисніть щоб обрати тип" Grid.RowSpan="2" 
-                               HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Height="24" Grid.Column="1" 
-                               IsReadOnly="True" SelectionChanged="C6_SelectionChanged" 
-                               />
-                    <ComboBox  Text="Посадкове місце" IsEditable="True" x:Name="C7" Margin="442.4,-1,21,5" Width="120" HorizontalAlignment="Center" 
-                               Foreground="White" AutomationProperties.HelpText="Натисніть щоб обрати посадкове місце" Grid.RowSpan="2" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Height="24" Grid.Column="1" IsReadOnly="True"/>
                 </Grid>
-                <Label Name="UserName" Content="Label" HorizontalAlignment="Left" Margin="444,326,0,-26" VerticalAlignment="Top"/>
-
-            </Grid>
+            </StackPanel>
         </StackPanel>
     </Border>
 </Window>

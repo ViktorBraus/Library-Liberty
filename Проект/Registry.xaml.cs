@@ -20,7 +20,7 @@ using Проект.AbstractFactory;
 using Проект.Classes;
 using System.Data;
 using System.Data.SqlClient;
-using Проект.Classes;
+//using Проект.Classes;
 namespace Проект
 {
     /// <summary>
@@ -30,7 +30,7 @@ namespace Проект
     {
 
         //public string _Name, Surname, Phone, Mail, Username, Password;
-        string Password;
+        //string Password;
         public Registry()
         {
             InitializeComponent();
@@ -42,7 +42,7 @@ namespace Проект
 
             if ((a.Text != "") && (a1.Text != "") && (a2.Text != "")
                 && (a3.Text != "") && (a4.Text != "")
-                && (a5.Password != "")&&(a6.Password!=""))
+                && (a6.Password != "")&&(a7.Password!=""))
             {
                 /*
                 _Name = a.Text;
@@ -51,17 +51,17 @@ namespace Проект
                 Mail = a3.Text;
                 Username = a4.Text;
                 Password = a5.Password;*/
-                Account account = Account.GetInstance(a.Text,a1.Text,a2.Text,a3.Text,a4.Text,a5.Password); 
-                if (a5.Password != a6.Password)
+                Account account = Account.GetInstance(a.Text, a1.Text, a2.Text, a3.Text, a4.Text, a5.Text, a6.Password); 
+                if (a6.Password != a7.Password)
                 {
                     MessageBox.Show("Passwords are not the same. retry please.");
                     MessageBox.Show("Паролі не сходяться. Будь ласка, перевірте правильність набору пароля.");
-                    a5.Password = null;
                     a6.Password = null;
+                    a7.Password = null;
                 }
                 else
                 {
-                    Database_Registry RStart = new Database_Registry(account.Name, account.Surname, account.Number, account.Email, account.Login, account.Password);
+                    Database_Registry RStart = new Database_Registry(account.Surname, account.Name, account.LastName, account.Address, account.Number, account.NickName, account.Password);
                     MessageBox.Show("Registration was Done Successfully");
                     MainWindow w = new MainWindow();
                     w.Show();
@@ -77,8 +77,9 @@ namespace Проект
                 a2.Text = null;
                 a3.Text = null;
                 a4.Text = null;
-                a5.Password = null;
+                a5.Text = null;
                 a6.Password = null;
+                a7.Password = null;
             }
         }
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -123,15 +124,16 @@ namespace Проект
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             Client UABoy = new Client(new UA());
-            _q1.Content = UABoy.InputYourRegistry();
-            _q2.Content = UABoy.InputYourRegistry1();
-            _q3.Content = UABoy.InputYourRegistry2();
-            _q4.Content = UABoy.InputYourRegistry3();
-            _q5.Content = UABoy.InputYourRegistry4();
-            _q6.Content = UABoy.InputYourRegistry5();
-            _q7.Content = UABoy.InputYourRegistry6();
+            Surname.Content = UABoy.InputYourRegistry();
+            Name.Content = UABoy.InputYourRegistry1();
+            LastName.Content = UABoy.InputYourRegistry2();
+            Address.Content = UABoy.InputYourRegistry3();
+            Phone_Number.Content = UABoy.InputYourRegistry4();
+            Nickname.Content = UABoy.InputYourRegistry5();
+            Password.Content = UABoy.InputYourRegistry6();
+            repeatPassword.Content = UABoy.InputYourRegistry7();
             Login1.Content = UABoy.InputYourRegistry8();
-            Exit1.Content = UABoy.InputYourRegistry7();
+            Exit1.Content = UABoy.InputYourRegistry9();
             Login1.FontSize = 18;
             Exit1.FontSize = 18;
 
@@ -139,15 +141,16 @@ namespace Проект
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Client USABoy = new Client(new USA());
-            _q1.Content = USABoy.InputYourRegistry();
-            _q2.Content = USABoy.InputYourRegistry1();
-            _q3.Content = USABoy.InputYourRegistry2();
-            _q4.Content = USABoy.InputYourRegistry3();
-            _q5.Content = USABoy.InputYourRegistry4();
-            _q6.Content = USABoy.InputYourRegistry5();
-            _q7.Content = USABoy.InputYourRegistry6();
+            Surname.Content = USABoy.InputYourRegistry();
+            Name.Content = USABoy.InputYourRegistry1();
+            LastName.Content = USABoy.InputYourRegistry2();
+            Address.Content = USABoy.InputYourRegistry3();
+            Phone_Number.Content = USABoy.InputYourRegistry4();
+            Nickname.Content = USABoy.InputYourRegistry5();
+            Password.Content = USABoy.InputYourRegistry6();
+            repeatPassword.Content = USABoy.InputYourRegistry7();
             Login1.Content = USABoy.InputYourRegistry8();
-            Exit1.Content = USABoy.InputYourRegistry7();
+            Exit1.Content = USABoy.InputYourRegistry9();
             Login1.FontSize = 20;
             Exit1.FontSize = 20;
         }

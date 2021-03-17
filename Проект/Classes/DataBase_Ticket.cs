@@ -18,47 +18,56 @@ using Проект.AbstractFactory.Abstract;
 using Проект.AbstractFactory.Factory;
 using Проект.AbstractFactory.Product;
 using Проект.AbstractFactory;
+using Проект.Abstract;
 using System.Data.SqlClient;
 namespace Проект.Classes
 {
     class DataBase_Ticket
     {
-        public string _TownFrom, _TownTo, _DateFrom, _DateTo, _Typeticket, _Place, _Username;
-        public int _price;
-        public DataBase_Ticket(string TownFrom, string TownTo, string DateFrom, string DateTo, string TypeTicket, int price, string Place, string Username)
+        Ticket ticket1;
+        public string _Typeticket, _Username;
+        public DataBase_Ticket(Ticket ticket, string username)
         {
-            _TownFrom = TownFrom;
-            _TownTo = TownTo;
-            _DateFrom = DateFrom;
-            _DateTo = DateTo;
-            _Typeticket = TypeTicket;
-            _price = price;
-            _Place = Place;
-            _Username = Username;
+            ticket1 = ticket;
+            _Username = username;
             Ticket();
         }
         public void Ticket()
         {
-            using (SqlConnection connection = new SqlConnection(@"Data Source=VIKTORB\SQLEXPRESS;Initial Catalog=Braus Airways;Integrated Security=True"))
+            using (SqlConnection connection = new SqlConnection(@"Data Source=VIKTOR_BRAUS\SQLEXPRESS01;Initial Catalog=Library;Integrated Security=True"))
             {
                 connection.Open();
-                SqlDataAdapter sda = new SqlDataAdapter("Select Count (*) From БилетЮзер where [Имя Пассажира] = '" + _Username + "'", connection);
+                var codeReader = 0;
+                var codeBook = 0;
+                SqlCommand command = new SqlCommand("Select distinct Код_ from Читачі where НікНейм ='"+ticket1.Нікнейм_Читача+"'", connection);
+                SqlCommand command1 = new SqlCommand("Select distinct Код_к from Книги, Жанри where Автор = '"+ticket1.Автор+"'and Найменування_жанру = '"+ticket1.Жанр_книги+"'and Назва = '"+ticket1.Назва_книги+"'", connection);
+                SqlDataAdapter sda = new SqlDataAdapter("Select Count (*) From Видача_книг where Код_читача = '" + _Username + "'", connection);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
-                    SqlCommand command = new SqlCommand("INSERT INTO БилетЮзер ([Город Отправления], [Город Прибытия],[Дата Отправления],[Дата Прибытия],[Тип Билета],[Цена за билет], [Посадочное Место], [Имя Пассажира])" +
-                        " VALUES(@_TownFrom, @_TownTo, @_DateFrom,@_DateTo,@_Typeticket,@_price, @_Place, @_Username)", connection);
-                    command.Parameters.AddWithValue("_TownFrom", _TownFrom);
-                    command.Parameters.AddWithValue("_TownTo", _TownTo);
-                    command.Parameters.AddWithValue("_DateFrom", _DateFrom);
-                    command.Parameters.AddWithValue("_DateTo", _DateTo);
-                    command.Parameters.AddWithValue("_Typeticket", _Typeticket);
-                    command.Parameters.AddWithValue("_price", _price);
-                    command.Parameters.AddWithValue("_Place", _Place);
-                    command.Parameters.AddWithValue("_Username", _Username);
-                    command.ExecuteNonQuery();
+                SqlDataReader DR = command.ExecuteReader();
+                while (DR.Read())
+                {
+                    codeReader = (int)DR[0];
+                }
+                DR.Close();
+                SqlDataReader DR1 = command.ExecuteReader();
+                while (DR1.Read())
+                {
+                    codeBook = (int)DR1[0];
+                }
+                DR1.Close();
+                //SqlDataReader DR1 = command1.ExecuteReader();
+                SqlCommand command2 = new SqlCommand("INSERT INTO Видача_Книг (Код_Книги, Код_Читача, Дата_Видачі, Очікувана_Дата_Здачі)" +
+                        " VALUES(@codeBook, @codeReader, @DateOfIssuance,@ExpectedDay)", connection);
+                    command2.Parameters.AddWithValue("codeBook", codeReader);
+                    command2.Parameters.AddWithValue("codeReader", codeBook);
+                    command2.Parameters.AddWithValue("DateOfIssuance", ticket1.Дата_Видачі);
+                    command2.Parameters.AddWithValue("ExpectedDay", ticket1.Очікувана_Дата_Здачі);
+                    command2.ExecuteNonQuery();
+                //DR1.Close();
                 connection.Close();
             }
-
         }
+
     }
 }

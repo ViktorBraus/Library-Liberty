@@ -32,68 +32,72 @@ namespace Проект.AbstractFactory.Product
         ///////////////////////////////////////////////////////////////////
         public override string LocR()
         {
-            return "Name";
+            return "Surname";
         }
         public override string LocR1()
         {
-            return "Surname";
+            return "Name";
         }
         public override string LocR2()
         {
-            return "Phone Number";
+            return "Last Name";
         }
         public override string LocR3()
         {
-            return "E-mail";
+            return "Address";
         }
         public override string LocR4()
         {
-            return "NickName";
+            return "Phone Number";
         }
         public override string LocR5()
         {
-            return "Password";
+            return "NickName";
         }
         public override string LocR6()
         {
-            return "Repeat Password";
+            return "Password";
         }
         public override string LocR7()
         {
-            return  "    Home";
+            return "Repeat Password";
         }
         public override string LocR8()
         {
-            return "   Submit";
+            return  "  Submit";
+        }
+        public override string LocR9()
+        {
+            return "    Home";
         }
         ///////////////////////////////////////////////////////////////////
         public override string LocT()
         {
-            return "Departure City";
+            return "Surname";
         }
         public override string LocT1()
         {
-            return "Arrival City";
+            return "Name";
         }
         public override string LocT2()
         {
-            return "Departure Time";
+            return "Last Name";
         }
         public override string LocT3()
         {
-            return "Arrival Time";
+            return "Address";
         }
         public override string LocT4()
         {
-            return "Ticket Type";
+            return "Phone Number";
         }
         public override string LocT5()
         {
-            return "Price";
+            return "NickName";
         }
         public override string LocT6()
         {
-            return "Seat";
+            return "Password";
         }
         public override string LocT7()
         {
@@ -102,6 +106,18 @@ namespace Проект.AbstractFactory.Product
         public override string LocT8()
         {
             return "       Update";
+        }
+        public override string LocT9()
+        {
+            return "Readers";
+        }
+        public override string LocT10()
+        {
+            return "Books";
+        }
+        public override string LocT11()
+        {
+            return "Books Issuance";
         }
         ///////////////////////////////////////////////////////////////////
         public override string LocTU()
@@ -138,11 +154,11 @@ namespace Проект.AbstractFactory.Product
         }
         public override string LocTU8()
         {
-            return "       Buy";
+            return "       Order";
         }
         public override string LocTU9()
         {
-            return "T   i   c   k   e   t                   O     r   d   e   r   i   n   g";
+            return "B   o   o   k            R   o   l   l   i   n   g";
         }
         //
     }

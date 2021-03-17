@@ -25,6 +25,7 @@ namespace Проект.AbstractFactory
         private readonly Content _Registry6;
         private readonly Content _Registry7;
         private readonly Content _Registry8;
+        private readonly Content _Registry9;
         /// ///////////////////////////////////////
         private readonly Content _T;
         private readonly Content _T1;
@@ -35,6 +36,9 @@ namespace Проект.AbstractFactory
         private readonly Content _T6;
         private readonly Content _T7;
         private readonly Content _T8;
+        private readonly Content _T9;
+        private readonly Content _T10;
+        private readonly Content _T11;
         /// ///////////////////////////////////////
         private readonly Content _TU;
         private readonly Content _TU1;
@@ -63,6 +67,7 @@ namespace Проект.AbstractFactory
             _Registry6 = factory.CreateRegistry6();
             _Registry7 = factory.CreateRegistry7();
             _Registry8 = factory.CreateRegistry8();
+            _Registry9 = factory.CreateRegistry9();
             _T = factory.CreateTicket();
             _T1 = factory.CreateTicket1();
             _T2 = factory.CreateTicket2();
@@ -72,6 +77,9 @@ namespace Проект.AbstractFactory
             _T6 = factory.CreateTicket6();
             _T7 = factory.CreateTicket7();
             _T8 = factory.CreateTicket8();
+            _T9 = factory.CreateTicket9();
+            _T10 = factory.CreateTicket10();
+            _T11 = factory.CreateTicket11();
             _TU = factory.CreateTicket();
             _TU1 = factory.CreateUTicket1();
             _TU2 = factory.CreateUTicket2();
@@ -142,6 +150,10 @@ namespace Проект.AbstractFactory
         {
             return _Registry8.LocR8();
         }
+        public string InputYourRegistry9()
+        {
+            return _Registry9.LocR9();
+        }
         ///////////////////////////////////////////////////////////////////
         public string InputYourTicket()
         {
@@ -178,6 +190,18 @@ namespace Проект.AbstractFactory
         public string InputYourTicket8()
         {
             return _T8.LocT8();
+        }
+        public string InputYourTicket9()
+        {
+            return _T9.LocT9();
+        }
+        public string InputYourTicket10()
+        {
+            return _T10.LocT10();
+        }
+        public string InputYourTicket11()
+        {
+            return _T11.LocT11();
         }
         ///////////////////////////////////////////////////////////////////
         public string InputYourUTicket()

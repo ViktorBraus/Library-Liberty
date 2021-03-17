@@ -13,39 +13,46 @@ namespace Проект.Classes
         private static Account instance = null;
         public string Name { get; set; }
         public string Surname { get; set; }
+        public string LastName { get; set; }
         public string Number { get; set; }
-        public string Email { get; set; }
-        public string Login { get; set; } 
+        public string Address { get; set; }
+        public string NickName { get; set; } 
         public string Password { get; set; }
-        public string Username { get; set; }
         public string TownFrom { get; set; }
         public string TownTo { get; set; }
         public string DateFrom { get; set; }
         public string Dateto { get; set; }
         public string TypeTicket { get; set; }
         public int Price { get; set; }
-        public string Place { get; set; }
+        public int Place { get; set; }
         // public bool isadmin { get; set; }
-        private Account(string _Name, string _Surname, string _Number, string _Email, string _Login, string _Password, string _Username)
+        private Account(
+            string _Surname, 
+            string _Name, 
+            string _LastName, 
+            string _Address, 
+            string _Number, 
+            string _NickName,
+            string _Password)
         {
-            Name = _Name;
-            Surname = _Surname;
-            Number = _Number;
-            Email = _Email;
-            Login = _Login;
+            Surname  = _Surname;
+            Name     = _Name;
+            LastName = _LastName;
+            Address  = _Address;
+            Number   = _Number;
+            NickName = _NickName;
             Password = _Password;
-            Username = _Username;
         }
-        public static Account GetInstance(string _Name, string _Surname, string _Number, string _Email, string _Login, string _Password)
+        public static Account GetInstance(string _Surname, string _Name, string _LastName, string _Address, string _Number, string NickName, string _Password)
         {
             if (instance == null)
-                instance = new Account( _Name, _Surname,  _Number,  _Email,  _Login,  _Password, null);
+                instance = new Account(_Surname, _Name, _LastName, _Address, _Number, NickName, _Password);
             return instance;
         }//@TownFrom, @TownTo, @DateFrom, @DateTo, @TypeTicket, @Price, @Place, @Username
-        public static Account GetInstance1(string TownFrom, string TownTo, string DateFrom, string DateTo, string TypeTicket, int Price, string Username)
+        public static Account GetInstance1(string TownFrom, string TownTo, string DateFrom, string DateTo, string TypeTicket, int Price, int Place)
         {
             if (instance == null)
-                instance = new Account(TownFrom, TownTo, DateFrom, DateTo, TypeTicket, Price.ToString(), Username);
+                instance = new Account(TownFrom, TownTo, DateFrom, DateTo, TypeTicket, Price.ToString(), Place.ToString());
             return instance;
         }
 
