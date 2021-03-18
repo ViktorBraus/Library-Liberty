@@ -37,6 +37,7 @@ namespace Проект.AbstractFactory.Abstract
         public abstract Content CreateTicket9();
         public abstract Content CreateTicket10();
         public abstract Content CreateTicket11();
+        public abstract Content CreateTicket12();
         ///////////////////////////////////////////////////////////////////
         public abstract Content CreateUTicket();
         public abstract Content CreateUTicket1();

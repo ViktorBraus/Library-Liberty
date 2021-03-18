@@ -39,6 +39,7 @@ namespace Проект.AbstractFactory
         private readonly Content _T9;
         private readonly Content _T10;
         private readonly Content _T11;
+        private readonly Content _T12;
         /// ///////////////////////////////////////
         private readonly Content _TU;
         private readonly Content _TU1;
@@ -80,6 +81,7 @@ namespace Проект.AbstractFactory
             _T9 = factory.CreateTicket9();
             _T10 = factory.CreateTicket10();
             _T11 = factory.CreateTicket11();
+            _T12 = factory.CreateTicket12();
             _TU = factory.CreateTicket();
             _TU1 = factory.CreateUTicket1();
             _TU2 = factory.CreateUTicket2();
@@ -202,6 +204,10 @@ namespace Проект.AbstractFactory
         public string InputYourTicket11()
         {
             return _T11.LocT11();
+        }
+        public string InputYourTicket12()
+        {
+            return _T12.LocT12();
         }
         ///////////////////////////////////////////////////////////////////
         public string InputYourUTicket()

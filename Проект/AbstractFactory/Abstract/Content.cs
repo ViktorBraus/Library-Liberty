@@ -38,6 +38,7 @@ namespace Проект.AbstractFactory.Abstract
         public abstract string LocT9();
         public abstract string LocT10();
         public abstract string LocT11();
+        public abstract string LocT12();
         ///////////////////////////////////////////////////////////////////
         public abstract string LocTU();
         public abstract string LocTU1();

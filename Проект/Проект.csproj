@@ -98,6 +98,9 @@
     <Compile Include="Classes\Database_Authorization.cs" />
     <Compile Include="Classes\Database_Registry.cs" />
     <Compile Include="Classes\DataBase_Ticket.cs" />
+    <Compile Include="JenreTable.xaml.cs">
+      <DependentUpon>JenreTable.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <Generator>MSBuild:Compile</Generator>
@@ -116,6 +119,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AdminIssuance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JenreTable.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

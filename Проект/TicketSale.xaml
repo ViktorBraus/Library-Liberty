@@ -89,14 +89,15 @@
                         <DropShadowEffect/>
                     </DataGrid.Effect>
                     <DataGrid.Columns>
-                        <DataGridTextColumn x:Name="s"  Binding="{Binding [Прізвище]}" SortDirection="Ascending" Header=" Прізвище" Width="auto"/>
-                        <DataGridTextColumn x:Name="s1" Binding="{Binding [Імя]}" SortDirection="Ascending" Header=" Ім'я" Width="auto"/>
-                        <DataGridTextColumn x:Name="s2" Binding="{Binding [По_батькові]}" SortDirection="Ascending" Header=" По-батькові" Width="auto"/>
-                        <DataGridTextColumn x:Name="s3" Binding="{Binding [Адреса]}" SortDirection="Ascending" Header=" Адреса Проживання" Width="auto"/>
-                        <DataGridTextColumn x:Name="s4" Binding="{Binding [Телефон]}" SortDirection="Ascending" Header=" Телефон" Width="auto"/>
-                        <DataGridTextColumn x:Name="s5" Binding="{Binding [Код_Категорії]}" SortDirection="Ascending" Header=" Код Категорії" Width="auto"/>
-                        <DataGridTextColumn x:Name="s6" Binding="{Binding [НікНейм]}" SortDirection="Ascending" Header=" НікНейм" Width="auto"/>
-                        <DataGridTextColumn x:Name="s7" Binding="{Binding [Пароль]}" SortDirection="Ascending" Header=" Пароль" Width="auto"/>
+                        <DataGridTextColumn x:Name="s"  Binding="{Binding [Код_]}" SortDirection="Ascending" Header=" Код Читача" Width="auto"/>
+                        <DataGridTextColumn x:Name="s1"  Binding="{Binding [Прізвище]}" SortDirection="Ascending" Header=" Прізвище" Width="auto"/>
+                        <DataGridTextColumn x:Name="s2" Binding="{Binding [Імя]}" SortDirection="Ascending" Header=" Ім'я" Width="auto"/>
+                        <DataGridTextColumn x:Name="s3" Binding="{Binding [По_батькові]}" SortDirection="Ascending" Header=" По-батькові" Width="auto"/>
+                        <DataGridTextColumn x:Name="s4" Binding="{Binding [Адреса]}" SortDirection="Ascending" Header=" Адреса Проживання" Width="auto"/>
+                        <DataGridTextColumn x:Name="s5" Binding="{Binding [Телефон]}" SortDirection="Ascending" Header=" Телефон" Width="auto"/>
+                        <DataGridTextColumn x:Name="s6" Binding="{Binding [Код_Категорії]}" SortDirection="Ascending" Header=" Код Категорії" Width="auto"/>
+                        <DataGridTextColumn x:Name="s7" Binding="{Binding [НікНейм]}" SortDirection="Ascending" Header=" НікНейм" Width="auto"/>
+                        <DataGridTextColumn x:Name="s8" Binding="{Binding [Пароль]}" SortDirection="Ascending" Header=" Пароль" Width="auto"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <Button FontFamily="Viner Hand ITC" FontWeight="Bold" Foreground="White" BorderBrush="White" 
@@ -139,7 +140,7 @@
                     </Button.Background>
                 </Button>
                 <StackPanel Margin="10,10,757,-145">
-                    <Button x:Name="readerstable" FontSize="20px" HorizontalAlignment="Center" Content="Readers" Margin="0" Width="Auto" Height="Auto" Click="readerstable_Click">
+                    <Button x:Name="readerstable" FontSize="20px" HorizontalAlignment="Center" Content="Readers" Margin="16,0,15.8,0" Width="Auto" Height="Auto" Click="readerstable_Click">
                         <Button.Background>
                             <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
                                 <GradientStop Color="#FF141414" Offset="0.159"/>
@@ -158,6 +159,17 @@
                         </Button.Background>
                     </Button>
                     <Button x:Name="bookissuancetable" FontSize="15px" HorizontalAlignment="Center" Content="Books Issuance" Margin="0" Width="Auto" Height="Auto" Click="bookissuancetable_Click">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                                <GradientStop Color="#FF141414" Offset="0.159"/>
+                                <GradientStop Color="#FF9B9BA8" Offset="0.5"/>
+                                <GradientStop Color="#FF6C3786" Offset="0.884"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                </StackPanel>
+                <StackPanel Margin="779,66,0,-56">
+                    <Button x:Name="jenreButton" FontSize="18px" HorizontalAlignment="Center" Content="Jenres" Margin="17,0,16.8,0" Width="Auto" Height="Auto" Click="jenrestable_Click" RenderTransformOrigin="7.307,-1.19">
                         <Button.Background>
                             <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
                                 <GradientStop Color="#FF141414" Offset="0.159"/>

@@ -70,6 +70,7 @@ namespace Проект.AbstractFactory.Factory
         {
             return new LUSA();
         }
+
         ///////////////////////////////////////////////////////////////////
         public override Content CreateTicket()
         {
@@ -116,6 +117,10 @@ namespace Проект.AbstractFactory.Factory
             return new LUSA();
         }
         public override Content CreateTicket11()
+        {
+            return new LUSA();
+        }
+        public override Content CreateTicket12()
         {
             return new LUSA();
         }

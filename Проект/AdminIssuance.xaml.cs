@@ -155,6 +155,7 @@ namespace Проект
             readerstable.Content = UABoy.InputYourTicket9();
             booksstable.Content = UABoy.InputYourTicket10();
             bookissuancetable.Content = UABoy.InputYourTicket11();
+            jenreButton.Content = UABoy.InputYourTicket12();
             DeleteButton.Content = UABoy.InputYourTicket7();
             UpdateButton.Content = UABoy.InputYourTicket8();
             Exit1.Content = UABoy.InputYourRegistry9();
@@ -171,6 +172,7 @@ namespace Проект
             readerstable.Content = USABoy.InputYourTicket9();
             booksstable.Content = USABoy.InputYourTicket10();
             bookissuancetable.Content = USABoy.InputYourTicket11();
+            jenreButton.Content = USABoy.InputYourTicket12();
             bookissuancetable.FontSize = 15;
             Exit1.Content = USABoy.InputYourRegistry9();
             // UpdateButton.FontSize = 18;
@@ -194,6 +196,13 @@ namespace Проект
         private void bookissuancetable_Click(object sender, RoutedEventArgs e)
         {
             AdminIssuance a = new AdminIssuance();
+            a.Show();
+            this.Close();
+        }
+        private void jenrestable_Click(object sender, RoutedEventArgs e)
+        {
+
+            JenreTable a = new JenreTable();
             a.Show();
             this.Close();
         }

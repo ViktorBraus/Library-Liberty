@@ -89,11 +89,12 @@
                         <DropShadowEffect/>
                     </DataGrid.Effect>
                     <DataGrid.Columns>
-                        <DataGridTextColumn x:Name="d"  Binding="{Binding [Назва]}" SortDirection="Ascending" Header=" Назва" Width="auto"/>
-                        <DataGridTextColumn x:Name="d1" Binding="{Binding [Автор]}" SortDirection="Ascending" Header=" Автор" Width="auto"/>
-                        <DataGridTextColumn x:Name="d2" Binding="{Binding [Код_Жанру]}" SortDirection="Ascending" Header=" Код Жанру" Width="auto"/>
-                        <DataGridTextColumn x:Name="d3" Binding="{Binding [сума_застави]}" SortDirection="Ascending" Header=" сума застави" Width="auto"/>
-                        <DataGridTextColumn x:Name="d4" Binding="{Binding [сума_прокату]}" SortDirection="Ascending" Header=" сума прокату" Width="auto"/>
+                        <DataGridTextColumn x:Name="d"  Binding="{Binding [Код_к]}" SortDirection="Ascending" Header=" Код Книги" Width="auto"/>
+                        <DataGridTextColumn x:Name="d1"  Binding="{Binding [Назва]}" SortDirection="Ascending" Header="Назва" Width="auto"/>
+                        <DataGridTextColumn x:Name="d2" Binding="{Binding [Автор]}" SortDirection="Ascending" Header=" Автор" Width="auto"/>
+                        <DataGridTextColumn x:Name="d3" Binding="{Binding [Код_Жанру]}" SortDirection="Ascending" Header=" Код Жанру" Width="auto"/>
+                        <DataGridTextColumn x:Name="d4" Binding="{Binding [сума_застави]}" SortDirection="Ascending" Header=" сума застави" Width="auto"/>
+                        <DataGridTextColumn x:Name="d5" Binding="{Binding [сума_прокату]}" SortDirection="Ascending" Header=" сума прокату" Width="auto"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <Button FontFamily="Viner Hand ITC" FontWeight="Bold" Foreground="White" BorderBrush="White" 
@@ -155,6 +156,17 @@
                         </Button.Background>
                     </Button>
                     <Button x:Name="bookissuancetable" FontSize="15px" HorizontalAlignment="Center" Content="Books Issuance" Margin="0" Width="Auto" Height="Auto" Click="bookissuancetable_Click_1">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                                <GradientStop Color="#FF141414" Offset="0.159"/>
+                                <GradientStop Color="#FF9B9BA8" Offset="0.5"/>
+                                <GradientStop Color="#FF6C3786" Offset="0.884"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                </StackPanel>
+                <StackPanel Margin="779,66,0,-56">
+                    <Button x:Name="jenreButton" FontSize="18px" HorizontalAlignment="Center" Content="Jenres" Margin="17,0,16.8,0" Width="Auto" Height="Auto" Click="jenrestable_Click" RenderTransformOrigin="7.307,-1.19">
                         <Button.Background>
                             <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
                                 <GradientStop Color="#FF141414" Offset="0.159"/>

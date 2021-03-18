@@ -119,6 +119,10 @@ namespace Проект.AbstractFactory.Product
         {
             return "Books Issuance";
         }
+        public override string LocT12()
+        {
+            return "Jenres";
+        }
         ///////////////////////////////////////////////////////////////////
         public override string LocTU()
         {

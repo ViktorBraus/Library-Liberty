@@ -56,6 +56,7 @@ namespace Проект
                 // установка команды на добавление для вызова хранимой процедуры
                 adapter.InsertCommand = new SqlCommand("sp_InsertPhone1", connection);
                 adapter.InsertCommand.CommandType = CommandType.StoredProcedure;
+                adapter.InsertCommand.Parameters.Add(new SqlParameter("@Код_к", SqlDbType.Int, 0, "Код_Книги"));
                 adapter.InsertCommand.Parameters.Add(new SqlParameter("@Назва", SqlDbType.NVarChar, 50, "Назва"));
                 adapter.InsertCommand.Parameters.Add(new SqlParameter("@Автор", SqlDbType.NVarChar, 50, "Автор"));
                 adapter.InsertCommand.Parameters.Add(new SqlParameter("@Код_Жанру", SqlDbType.Int, 0, "Код_Жанру"));
@@ -159,6 +160,7 @@ namespace Проект
             readerstable.Content = UABoy.InputYourTicket9();
             booksstable.Content = UABoy.InputYourTicket10();
             bookissuancetable.Content = UABoy.InputYourTicket11();
+            jenreButton.Content = UABoy.InputYourTicket12();
             DeleteButton.Content = UABoy.InputYourTicket7();
             UpdateButton.Content = UABoy.InputYourTicket8();
             Exit1.Content = UABoy.InputYourRegistry9();
@@ -175,6 +177,7 @@ namespace Проект
             readerstable.Content = USABoy.InputYourTicket9();
             booksstable.Content = USABoy.InputYourTicket10();
             bookissuancetable.Content = USABoy.InputYourTicket11();
+            jenreButton.Content = USABoy.InputYourTicket12();
             bookissuancetable.FontSize = 15;
             Exit1.Content = USABoy.InputYourRegistry9();
             // UpdateButton.FontSize = 18;
@@ -198,6 +201,13 @@ namespace Проект
         private void bookissuancetable_Click_1(object sender, RoutedEventArgs e)
         {
             AdminIssuance a = new AdminIssuance();
+            a.Show();
+            this.Close();
+        }
+        private void jenrestable_Click(object sender, RoutedEventArgs e)
+        {
+
+            JenreTable a = new JenreTable();
             a.Show();
             this.Close();
         }

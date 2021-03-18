@@ -22,18 +22,18 @@ using Проект.AbstractFactory.Product;
 using Проект.AbstractFactory;
 using Проект.Classes;
 
+
 namespace Проект
 {
     /// <summary>
-    /// Логика взаимодействия для TicketSale.xaml
+    /// Логика взаимодействия для JenreTable.xaml
     /// </summary>
-    public partial class TicketSale : Window
+    public partial class JenreTable : Window
     {
-
         string connectionString;
         SqlDataAdapter adapter;
         DataTable Readers;
-        public TicketSale()
+        public JenreTable()
         {
             InitializeComponent();
             connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
@@ -45,7 +45,7 @@ namespace Проект
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            string sql = "SELECT * FROM Читачі";
+            string sql = "SELECT * FROM Жанри";
             Readers = new DataTable();
             SqlConnection connection = null;
             try
@@ -58,14 +58,7 @@ namespace Проект
                 adapter.InsertCommand = new SqlCommand("sp_InsertPhone1", connection);
                 adapter.InsertCommand.CommandType = CommandType.StoredProcedure;
                 adapter.InsertCommand.Parameters.Add(new SqlParameter("@Код_", SqlDbType.Int, 0, "Код_"));
-                adapter.InsertCommand.Parameters.Add(new SqlParameter("@Прізвище", SqlDbType.NVarChar, 50, "Прізвище"));
-                adapter.InsertCommand.Parameters.Add(new SqlParameter("@Імя", SqlDbType.NVarChar, 50, "Ім'я"));
-                adapter.InsertCommand.Parameters.Add(new SqlParameter("@По_батькові", SqlDbType.NVarChar, 0, "По-батькові"));
-                adapter.InsertCommand.Parameters.Add(new SqlParameter("@Адреса", SqlDbType.NVarChar, 0, "Дата Адреса Проживання"));
-                adapter.InsertCommand.Parameters.Add(new SqlParameter("@Телефон", SqlDbType.NVarChar, 10, "Телефон"));
-                adapter.InsertCommand.Parameters.Add(new SqlParameter("@Код_Категорії", SqlDbType.Int, 0, "Код Категорії"));
-                adapter.InsertCommand.Parameters.Add(new SqlParameter("@НікНейм", SqlDbType.NVarChar, 0, "НікНейм"));
-                adapter.InsertCommand.Parameters.Add(new SqlParameter("@Пароль", SqlDbType.NVarChar, 0, "Пароль"));
+                adapter.InsertCommand.Parameters.Add(new SqlParameter("@Найменування_жанру", SqlDbType.NVarChar, 50, "Найменування жанру"));
                 SqlParameter parameter = adapter.InsertCommand.Parameters.Add("@Код", SqlDbType.Int, 0, "Id");
                 parameter.Direction = ParameterDirection.Output;
 
@@ -206,7 +199,6 @@ namespace Проект
             a.Show();
             this.Close();
         }
-
         private void jenrestable_Click(object sender, RoutedEventArgs e)
         {
 

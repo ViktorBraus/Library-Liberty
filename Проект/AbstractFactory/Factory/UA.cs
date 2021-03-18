@@ -119,6 +119,10 @@ namespace Проект.AbstractFactory.Factory
         {
             return new LUA();
         }
+        public override Content CreateTicket12()
+        {
+            return new LUA();
+        }
         ///////////////////////////////////////////////////////////////////
         public override Content CreateUTicket()
         {

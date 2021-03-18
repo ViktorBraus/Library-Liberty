@@ -117,18 +117,34 @@ namespace Проект
         }
         private void C1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            using (SqlConnection connection = new SqlConnection(@"Data Source=VIKTOR_BRAUS\SQLEXPRESS01;Initial Catalog=Library;Integrated Security=True"))
+            if (C1.SelectedValue == null)
             {
-                connection.Open();
-                SqlCommand comd6 = new SqlCommand("Select distinct Автор from Книги,Жанри where Найменування_жанру='" + C1.SelectedValue.ToString() + "' and Код_=Код_Жанру", connection);
-                SqlDataReader DR6 = comd6.ExecuteReader();
-                C2.Items.Clear();
-                while (DR6.Read())
+                MessageBox.Show("Спочатку Оберіть Жанр книги.");
+                MessageBox.Show("At first, choose the book jenre.");
+                C2.Text = "Автор";
+                C3.Text = "Назва книги";
+                C4.Text = "Сума застави";
+                C5.Text = "Сума прокату";
+            }
+            else
+            {
+                using (SqlConnection connection = new SqlConnection(@"Data Source=VIKTOR_BRAUS\SQLEXPRESS01;Initial Catalog=Library;Integrated Security=True"))
                 {
-                    C2.Items.Add(DR6[0]);
+                    connection.Open();
+                    C2.Text = "Автор";
+                    C3.Text = "Назва книги";
+                    C4.Text = "Сума застави";
+                    C5.Text = "Сума прокату";
+                    SqlCommand comd6 = new SqlCommand("Select distinct Автор from Книги,Жанри where Найменування_жанру='" + C1.SelectedValue.ToString() + "' and Код_=Код_Жанру", connection);
+                    SqlDataReader DR6 = comd6.ExecuteReader();
+                    C2.Items.Clear();
+                    while (DR6.Read())
+                    {
+                        C2.Items.Add(DR6[0]);
+                    }
+                    DR6.Close();
+                    connection.Close();
                 }
-                DR6.Close();
-                connection.Close();
             }
         }
         private void C2_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -145,16 +161,27 @@ namespace Проект
                 using (SqlConnection connection = new SqlConnection(@"Data Source=VIKTOR_BRAUS\SQLEXPRESS01;Initial Catalog=Library;Integrated Security=True"))
                 {
                     connection.Open();
-                    SqlCommand comd5 = new SqlCommand("Select distinct Назва from Книги,Жанри where Автор ='" + C2.SelectedValue.ToString() + "' and Код_=Код_Жанру", connection);
-                    SqlDataReader DR5 = comd5.ExecuteReader();
-                    C3.Items.Clear();
-                    while (DR5.Read())
+                    if (C2.SelectedValue == null)
                     {
-
-                        C3.Items.Add(DR5[0]);
+                        C2.SelectedValue = "Автор";
+                        C2.Text = "Автор";
                     }
-                    DR5.Close();
-                    connection.Close();
+                    else
+                    {
+                        C3.Text = "Назва книги";
+                        C4.Text = "Сума застави";
+                        C5.Text = "Сума прокату";
+                        SqlCommand comd5 = new SqlCommand("Select distinct Назва from Книги,Жанри where Автор ='" + C2.SelectedValue.ToString() + "' and Код_=Код_Жанру", connection);
+                        SqlDataReader DR5 = comd5.ExecuteReader();
+                        C3.Items.Clear();
+                        while (DR5.Read())
+                        {
+
+                            C3.Items.Add(DR5[0]);
+                        }
+                        DR5.Close();
+                        connection.Close();
+                    }
                 }
             }
             
@@ -175,16 +202,23 @@ namespace Проект
                 using (SqlConnection connection = new SqlConnection(@"Data Source=VIKTOR_BRAUS\SQLEXPRESS01;Initial Catalog=Library;Integrated Security=True"))
                 {
                     connection.Open();
-                    //Select distinct Сума_прокату from Книги,Жанри where Автор ='Джоан Роулінг'and Найменування_жанру='Фентезі'and Назва='Гаррі Поттер і келих вогню';
-                    SqlCommand comd5 = new SqlCommand("Select Сума_застави from Книги,Жанри where Назва ='" + C3.SelectedValue.ToString() + "'and Автор ='" + C2.SelectedValue.ToString() + "' and Найменування_жанру='"+C1.SelectedValue.ToString() +"'", connection);
-                    SqlDataReader DR5 = comd5.ExecuteReader();
-                    C4.Items.Clear();
-                    while (DR5.Read())
+                    if (C3.SelectedValue == null)
                     {
-                        C4.Items.Add(DR5[0]);
+                        C4.SelectedValue = "Сума застави";
+                        C4.Text = "Сума застави";
                     }
-                    DR5.Close();
-                    connection.Close();
+                    else
+                    {
+                        SqlCommand comd5 = new SqlCommand("Select Сума_застави from Книги,Жанри where Назва ='" + C3.SelectedValue.ToString() + "'and Автор ='" + C2.SelectedValue.ToString() + "' and Найменування_жанру='" + C1.SelectedValue.ToString() + "'", connection);
+                        SqlDataReader DR5 = comd5.ExecuteReader();
+                        C4.Items.Clear();
+                        while (DR5.Read())
+                        {
+                            C4.Items.Add(DR5[0]);
+                        }
+                        DR5.Close();
+                        connection.Close();
+                    }
                 }
             }
         }
@@ -198,23 +232,30 @@ namespace Проект
                 C1.Text = "Жанр";
                 C2.Text = "Автор";
                 C3.Text = "Назва книги";
-                C4.Text = "Сума_застави";
+                C4.Text = "Сума застави";
             }
             else
             {
                 using (SqlConnection connection = new SqlConnection(@"Data Source=VIKTOR_BRAUS\SQLEXPRESS01;Initial Catalog=Library;Integrated Security=True"))
                 {
                     connection.Open();
-                    //Select distinct Сума_прокату from Книги,Жанри where Автор ='Джоан Роулінг'and Найменування_жанру='Фентезі'and Назва='Гаррі Поттер і келих вогню';
-                    SqlCommand comd5 = new SqlCommand("Select Сума_прокату from Книги,Жанри where Назва ='" + C3.SelectedValue.ToString() + "'and Автор ='" + C2.SelectedValue.ToString() + "' and Найменування_жанру='" + C1.SelectedValue.ToString() + "'", connection);
-                    SqlDataReader DR5 = comd5.ExecuteReader();
-                    C5.Items.Clear();
-                    while (DR5.Read())
+                    if (C4.SelectedValue == null)
                     {
-                        C5.Items.Add(DR5[0]);
+                        C5.SelectedValue = "Сума прокату";
+                        C5.Text = "Сума прокату";
                     }
-                    DR5.Close();
-                    connection.Close();
+                    else
+                    {
+                        SqlCommand comd5 = new SqlCommand("Select Сума_прокату from Книги,Жанри where Назва ='" + C3.SelectedValue.ToString() + "'and Автор ='" + C2.SelectedValue.ToString() + "' and Найменування_жанру='" + C1.SelectedValue.ToString() + "'", connection);
+                        SqlDataReader DR5 = comd5.ExecuteReader();
+                        C5.Items.Clear();
+                        while (DR5.Read())
+                        {
+                            C5.Items.Add(DR5[0]);
+                        }
+                        DR5.Close();
+                        connection.Close();
+                    }
                 }
             }
         }
